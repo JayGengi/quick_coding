@@ -1,0 +1,144 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions' //扩展插件
+apply plugin: 'kotlin-kapt'  //kapt3插件
+
+android {
+    signingConfigs {
+//        config {
+//            keyAlias 'kotlingank'
+//            keyPassword '123456'
+//            storeFile file('../kotlingank.jks')
+//            storePassword '123456'
+//        }
+    }
+    compileSdkVersion 27
+    buildToolsVersion "28.0.3"
+    defaultConfig {
+        applicationId "com.jaygengi.gank"
+        minSdkVersion 18
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.1.0"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+//        signingConfig signingConfigs.config
+        // 实现毛玻璃那种透明的效果需要添加的库
+        renderscriptTargetApi 19
+        renderscriptSupportModeEnabled true    // Enable RS support
+
+        ndk {
+            //APP的build.gradle设置支持的SO库架构
+            abiFilters 'armeabi', 'armeabi-v7a', 'x86'
+        }
+        multiDexEnabled true
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable true
+//            signingConfig signingConfigs.config
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+//            signingConfig signingConfigs.config
+            zipAlignEnabled true
+        }
+    }
+    sourceSets {
+        main {
+            jni.srcDirs = []
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    // 自定义输出配置
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "kotlinmvp_v${variant.versionName}_${variant.name}.apk"
+        }
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+    productFlavors {
+
+    }
+
+    dexOptions {
+        jumboMode true
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //kotlin 支持库
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // Support库
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+
+    implementation 'com.android.support.constraint:constraint-layout:2.0.0-alpha2'
+
+    implementation 'com.android.support:multidex:1.0.3'
+
+    //qmui
+    implementation 'com.qmuiteam:qmui:1.1.6'
+    // 底部菜单
+    implementation('com.flyco.tablayout:FlycoTabLayout_Lib:2.1.0@aar') {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    //rxjava2
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+
+    //Retrofit依赖OkHttp来进行网络请求 日志拦截器
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+
+    ////BaseQuickAdapter[很赞的适配器封装]
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+    //smartRefreshLayout 下拉刷新
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
+
+    implementation project(':multiple-status-view')
+    //模糊透明 View
+    implementation 'com.github.mmin18:realtimeblurview:1.1.0'
+
+    //Logger
+    implementation 'com.orhanobut:logger:2.1.1'
+    //leakCanary 内存泄漏自检
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
+
+    //banner
+    implementation 'com.youth.banner:banner:1.4.10'
+    implementation 'com.github.SherlockGougou:BigImageViewPager:v4_2.1.4'
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    implementation 'com.github.bumptech.glide:okhttp3-integration:4.8.0'
+    //WebView
+    implementation 'com.github.delight-im:Android-AdvancedWebView:v3.0.0'
+    //今日头条屏幕适配
+//    implementation 'me.jessyan:autosize:1.0.6'
+}

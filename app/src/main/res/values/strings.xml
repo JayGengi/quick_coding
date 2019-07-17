@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">空气巴巴</string>
+
+
+    <string name="nickname">JayGengi</string>
+    <string name="view_homepage">查看个人主页 ></string>
+    
+
+
+    <string name="loading_text">加载中&#8230;</string>
+    <string name="no_network">请检查网络后点击重新加载</string>
+    <string name="data_error">数据获取失败(ㄒoㄒ)~~</string>
+    <string name="empty_view_hint">暂时木有内容呀~~</string>
+    <string name="splash_title">干货集中营</string>
+    <string name="splash_text">每日分享妹子图 和 技术干货</string>
+    
+    
+
+</resources>

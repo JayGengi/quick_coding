@@ -1,0 +1,36 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="QMUI.Compat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- 配置qmui提供的theme -->
+        <item name="qmui_config_color_blue">@color/colorPrimary</item>
+        <item name="QMUITopBarStyle">@style/QDTopBar</item>
+    </style>
+    <!--**********************************************
+            *             qmui topbar style              *
+            ***********************************************-->
+    <style name="QDTopBar" parent="QMUI.TopBar">
+        <item name="qmui_topbar_separator_height">0px</item>
+        <item name="qmui_topbar_title_color">@color/colorPrimary</item>
+        <item name="qmui_topbar_bg_color">@color/colorPrimary</item>
+        <item name="qmui_topbar_left_back_drawable_id">@drawable/ic_left</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="qmui_topbar_text_btn_color_state_list">@color/colorPrimary</item>
+        <item name="android:windowFullscreen">false</item>
+
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar.FullScreen">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+</resources>
