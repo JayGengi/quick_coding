@@ -19,7 +19,7 @@
             />
 
     </RelativeLayout>
-    <com.jaygengi.gank.widget.SlidingTabLayout
+    <com.guoxun.airbaba.widget.SlidingTabLayout
         android:id="@+id/sliding_tabs"
         android:paddingBottom="0dp"
         android:layout_width="match_parent"
