@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.app.FragmentTransaction
 import android.view.KeyEvent
+import android.view.View
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
 import com.guoxun.airbaba.mvp.model.bean.TabEntity
@@ -50,6 +51,8 @@ class MainActivity : BaseActivity() {
             mIndex = savedInstanceState.getInt("currTabIndex")
         }
         super.onCreate(savedInstanceState)
+        //目的是为了透明状态栏 ps:QMUI适配的沉浸状态栏，问题根源在这套架构找不到，死办法解决
+        mBaseLayout.visibility = View.GONE
         initTab()
         tab_layout.currentTab = mIndex
         switchFragment(mIndex)

@@ -10,8 +10,8 @@ import com.guoxun.airbaba.mvp.model.bean.ToDayEntity
 import com.guoxun.airbaba.ui.adapter.HomePageAdapter
 import com.guoxun.airbaba.ui.fragment.home.CategoryFragment
 import com.guoxun.airbaba.ui.fragment.home.HomeIndexFragment
-import kotlinx.android.synthetic.main.fragment_home.sliding_tabs
-import kotlinx.android.synthetic.main.fragment_home.viewpager
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper
+import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
 
 /**
@@ -33,6 +33,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         loadData()
     }
     override fun initView() {
+        real_lib_lay.layoutParams.height = QMUIStatusBarHelper.getStatusbarHeight(context)
 //        initTopSearch()
         fragments.add(HomeIndexFragment())
         fragments.add(CategoryFragment.newInstance("Android"))

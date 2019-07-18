@@ -25,7 +25,7 @@
     <color name="air_color_yellow_circle">#FFC000</color>
     <color name="air_fans_bg">#c2c2c2</color>
     <color name="air_color_classify">#438A32</color>
-
+    <color name="mine_red">#F70C39</color>
     <color name="tl_textSelectColor">#018BFF</color>
     <color name="tl_textUnselectColor">#999999</color>
 
