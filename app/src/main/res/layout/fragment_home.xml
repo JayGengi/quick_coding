@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/home_lay"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -21,14 +20,97 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:loadingView="@layout/layout_loading_view"
             app:noNetworkView="@layout/layout_network_view">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:scrollbarStyle="outsideOverlay"
-                android:background="@color/common_color_line" />
+                android:layout_marginTop="3dp"
+                android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="3dp"
+                tools:ignore="MissingConstraints">
+
+                <RelativeLayout
+                    android:id="@+id/qrcode_lay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/qrcode"
+                        android:layout_width="21dp"
+                        android:layout_height="21dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:background="@mipmap/ic_message_nor"
+                        android:scaleType="centerCrop" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/search_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="54dp"
+                    android:layout_marginEnd="54dp"
+                    android:background="@drawable/item_search_bg"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="20dp"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:src="@mipmap/ic_search_nor" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:gravity="center_vertical"
+                        android:hint="搜索商品"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/home_type_lay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:id="@+id/home_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="筛选"
+                        android:textSize="14sp"
+                        android:textColor="@color/color_black"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <com.guoxun.airbaba.widget.SlidingTabLayout
+                android:id="@+id/sliding_tabs"
+                android:paddingBottom="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/common_color_line"/>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="0px"
+                android:layout_weight="1" />
+            </LinearLayout>
 
         </com.classic.common.MultipleStatusView>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>

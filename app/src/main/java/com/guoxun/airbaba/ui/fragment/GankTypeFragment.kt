@@ -39,7 +39,7 @@ class GankTypeFragment : BaseFragment(){
     @SuppressLint("ResourceAsColor", "SetTextI18n")
     override fun initView() {
         title.text ="GankType"
-        fragments.add(WelfareFragment())
+//        fragments.add(WelfareFragment())
         fragments.add(CategoryFragment.newInstance("Android"))
         fragments.add(CategoryFragment.newInstance("App"))
         fragments.add(CategoryFragment.newInstance("iOS"))
@@ -47,7 +47,7 @@ class GankTypeFragment : BaseFragment(){
         fragments.add(CategoryFragment.newInstance("前端"))
         fragments.add(CategoryFragment.newInstance("拓展资源"))
         fragments.add(CategoryFragment.newInstance("瞎推荐"))
-        titles.add("福利")
+//        titles.add("福利")
         titles.add("Android")
         titles.add("App")
         titles.add("iOS")

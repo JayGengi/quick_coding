@@ -1,18 +1,17 @@
 package com.guoxun.airbaba.ui.fragment
 
 import android.os.Bundle
-import android.support.v7.widget.RecyclerView
-import com.alibaba.android.vlayout.DelegateAdapter
-import com.alibaba.android.vlayout.LayoutHelper
-import com.alibaba.android.vlayout.VirtualLayoutManager
-import com.alibaba.android.vlayout.layout.LinearLayoutHelper
+import android.support.v4.app.Fragment
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.mvp.contract.HomeContract
 import com.guoxun.airbaba.mvp.model.bean.GirlsEntity
 import com.guoxun.airbaba.mvp.model.bean.ToDayEntity
-import com.guoxun.airbaba.ui.adapter.home.vlayout.HomeTopSearchAdapter
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.guoxun.airbaba.ui.adapter.HomePageAdapter
+import com.guoxun.airbaba.ui.fragment.home.CategoryFragment
+import com.guoxun.airbaba.ui.fragment.home.HomeIndexFragment
+import kotlinx.android.synthetic.main.fragment_home.sliding_tabs
+import kotlinx.android.synthetic.main.fragment_home.viewpager
 import java.util.*
 
 /**
@@ -24,31 +23,35 @@ import java.util.*
 
 class HomeFragment : BaseFragment(), HomeContract.View {
 
-    private var mAdapters: LinkedList<DelegateAdapter.Adapter<*>>? = null
-    private var mDelegateAdapter: DelegateAdapter? = null
-    private var homeTopSearchAdapter: HomeTopSearchAdapter? = null
+
+    private val fragments = ArrayList<Fragment>()
+    private val titles = ArrayList<String>()
+
     override fun getLayoutId(): Int = R.layout.fragment_home
 
     override fun lazyLoad() {
         loadData()
     }
     override fun initView() {
-        recycler.apply {
-            setHasFixedSize(true)
-            isNestedScrollingEnabled = false
-            layoutManager = VirtualLayoutManager(context!!)
-            mDelegateAdapter = DelegateAdapter(layoutManager as VirtualLayoutManager, false)
-            adapter = mDelegateAdapter
-            //设置回收复用池大小，（如果一屏内相同类型的 View 个数比较多，需要设置一个合适的大小，防止来回滚动时重新创建 View）
-            recycledViewPool = RecyclerView.RecycledViewPool()
-            recycledViewPool.setMaxRecycledViews(0, 10)
+//        initTopSearch()
+        fragments.add(HomeIndexFragment())
+        fragments.add(CategoryFragment.newInstance("Android"))
+        fragments.add(CategoryFragment.newInstance("App"))
+        fragments.add(CategoryFragment.newInstance("iOS"))
+        fragments.add(CategoryFragment.newInstance("休息视频"))
+        fragments.add(CategoryFragment.newInstance("前端"))
+        titles.add("首页")
+        titles.add("Android")
+        titles.add("App")
+        titles.add("iOS")
+        titles.add("休息视频")
+        titles.add("前端")
+        viewpager.adapter = HomePageAdapter(childFragmentManager).apply {
+            setData(fragments,titles)
         }
+        viewpager.offscreenPageLimit = 4
 
-        mAdapters = LinkedList()
-        initTopSearch()
-
-        mDelegateAdapter!!.setAdapters(mAdapters)
-
+        sliding_tabs.setViewPager(viewpager)
     }
     private fun loadData(){
 
@@ -60,15 +63,15 @@ class HomeFragment : BaseFragment(), HomeContract.View {
      * @data 2019/7/18 14:24
      * @email JayGengi@163.com
      */
-    private fun initTopSearch() {
-        homeTopSearchAdapter = HomeTopSearchAdapter(
-                LinearLayoutHelper() as LayoutHelper,
-                R.layout.item_home_top_search,
-                null)
-        mAdapters!!.add(homeTopSearchAdapter!!)
-
-
-    }
+//    private fun initTopSearch() {
+//        homeTopSearchAdapter = HomeTopSearchAdapter(
+//                LinearLayoutHelper() as LayoutHelper,
+//                R.layout.item_home_top_search,
+//                null)
+//        mAdapters!!.add(homeTopSearchAdapter!!)
+//
+//
+//    }
     override fun showGirlInfo(dataInfo: GirlsEntity) {
     }
     override fun showToDayInfo(todayInfo: ToDayEntity) {
