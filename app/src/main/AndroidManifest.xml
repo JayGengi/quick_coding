@@ -57,10 +57,36 @@
         <!-- 搜索頁 -->
         <activity
             android:name=".ui.activity.SearchActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <!-- WebView -->
         <activity
             android:name=".ui.activity.WebViewActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 首页菜单二级首页 -->
+        <activity
+            android:name=".ui.activity.home.HomeMenuMainActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 厂家直销 -->
+        <activity
+            android:name=".ui.activity.home.HomeFactoryOutletActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 免费设计 -->
+        <activity
+            android:name=".ui.activity.home.HomeFreeDesignActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 消息中心 -->
+        <activity
+            android:name=".ui.activity.home.HomeMessageActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
     </application>

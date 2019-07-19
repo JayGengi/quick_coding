@@ -44,8 +44,6 @@ class MainActivity : BaseActivity() {
 
     //默认为0
     private var mIndex = 0
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         if (savedInstanceState != null) {
             mIndex = savedInstanceState.getInt("currTabIndex")

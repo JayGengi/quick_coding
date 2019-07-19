@@ -1,9 +1,12 @@
 package com.guoxun.airbaba.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.view.View
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
+import com.guoxun.airbaba.ui.activity.home.HomeMessageActivity
 import com.guoxun.airbaba.ui.adapter.HomePageAdapter
 import com.guoxun.airbaba.ui.fragment.home.HomeIndexFragment
 import com.guoxun.airbaba.ui.fragment.home.HomeTypeFragment
@@ -18,13 +21,22 @@ import java.util.*
    * @email jaygengiii@gmail.com
    */
 
-class HomeFragment : BaseFragment() {
-
+class HomeFragment : BaseFragment() , View.OnClickListener{
 
     private val fragments = ArrayList<Fragment>()
     private val titles = ArrayList<String>()
 
     override fun getLayoutId(): Int = R.layout.fragment_home
+
+    companion object {
+        fun getInstance(title: String): HomeFragment {
+            val fragment = HomeFragment()
+            val bundle = Bundle()
+            fragment.arguments = bundle
+//            fragment.mTitle = title
+            return fragment
+        }
+    }
 
     override fun lazyLoad() {
         loadData()
@@ -50,19 +62,18 @@ class HomeFragment : BaseFragment() {
         viewpager.offscreenPageLimit = 4
 
         sliding_tabs.setViewPager(viewpager)
+
+        message_lay.setOnClickListener(this)
     }
     private fun loadData(){
 
     }
 
-    companion object {
-        fun getInstance(title: String): HomeFragment {
-            val fragment = HomeFragment()
-            val bundle = Bundle()
-            fragment.arguments = bundle
-//            fragment.mTitle = title
-            return fragment
+    override fun onClick(v: View?) {
+        when(v!!.id){
+            R.id.message_lay ->{
+                startActivity(Intent(activity, HomeMessageActivity::class.java))
+            }
         }
     }
-
 }

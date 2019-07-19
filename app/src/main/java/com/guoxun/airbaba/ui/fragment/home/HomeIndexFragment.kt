@@ -1,14 +1,19 @@
 package com.guoxun.airbaba.ui.fragment.home
 
+import android.content.Intent
+import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
+import com.guoxun.airbaba.ui.activity.home.HomeFactoryOutletActivity
+import com.guoxun.airbaba.ui.activity.home.HomeFreeDesignActivity
+import com.guoxun.airbaba.ui.activity.home.HomeMenuMainActivity
 import com.guoxun.airbaba.ui.adapter.home.HomeMenuAdapter
 import com.guoxun.airbaba.ui.adapter.home.HomeSelectAdapter
 import com.guoxun.airbaba.ui.adapter.home.HomeShopAdapter
 import com.guoxun.airbaba.widget.GridSpacingItemDecoration
 import kotlinx.android.synthetic.main.fragment_home_index.*
-import java.util.ArrayList
+import java.util.*
 
 
 /**
@@ -51,6 +56,30 @@ class HomeIndexFragment : BaseFragment() {
         menuList.add("积分换购")
         menuList.add("优惠活动")
         mAdapter?.setNewData(menuList)
+
+        mAdapter?.setOnItemClickListener { adapter, view, position ->
+            val bundle = Bundle()
+            when(position){
+                //厂家直销
+                0 ->{
+                    startActivity(Intent(context, HomeFactoryOutletActivity::class.java))
+                }
+                //新零售特供
+                1 ->{
+                    bundle.putString("title","新零售特供")
+                    startActivity(Intent(context, HomeMenuMainActivity::class.java).putExtras(bundle))
+                }
+                //免费设计
+                2 ->{
+                    startActivity(Intent(context, HomeFreeDesignActivity::class.java))
+                }
+                //积分换购
+                6 ->{
+                    bundle.putString("title","积分换购")
+                    startActivity(Intent(context, HomeMenuMainActivity::class.java).putExtras(bundle))
+                }
+            }
+        }
 
 
 

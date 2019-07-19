@@ -16,7 +16,7 @@
             ***********************************************-->
     <style name="QDTopBar" parent="QMUI.TopBar">
         <item name="qmui_topbar_separator_height">0px</item>
-        <item name="qmui_topbar_title_color">@color/colorPrimary</item>
+        <item name="qmui_topbar_title_color">@color/color_first_text</item>
         <item name="qmui_topbar_bg_color">@color/colorPrimary</item>
         <item name="qmui_topbar_left_back_drawable_id">@drawable/ic_left</item>
         <item name="android:paddingLeft">0dp</item>
