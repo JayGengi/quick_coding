@@ -55,7 +55,7 @@
                 android:layout_height="21dp"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="15dp"
-                android:background="@mipmap/ic_message_nor"
+                android:background="@mipmap/ic_set_nor"
                 android:scaleType="centerCrop" />
         </RelativeLayout>
 
@@ -65,7 +65,7 @@
             android:layout_marginTop="79dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:background="@drawable/common_textview_border_white"
+            android:background="@drawable/img_clip_nor"
             >
             <RelativeLayout
                 android:id="@+id/per_lay"
@@ -401,8 +401,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:drawableTop="@mipmap/ic_obligation_nor"
-                    android:drawablePadding="5dp"
+                    android:drawableTop="@mipmap/ic_collection_nor"
+                    android:drawablePadding="13dp"
                     android:text="我的收藏"
                     android:textColor="@color/color_first_text"
                     android:textSize="12sp" />
@@ -422,8 +422,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:drawableTop="@mipmap/ic_obligation_nor"
-                    android:drawablePadding="5dp"
+                    android:drawableTop="@mipmap/ic_address_nor"
+                    android:drawablePadding="13dp"
                     android:text="地址管理"
                     android:textColor="@color/color_first_text"
                     android:textSize="12sp" />
@@ -443,8 +443,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:drawableTop="@mipmap/ic_obligation_nor"
-                    android:drawablePadding="5dp"
+                    android:drawableTop="@mipmap/ic_team_nor"
+                    android:drawablePadding="13dp"
                     android:text="我的团队"
                     android:textColor="@color/color_first_text"
                     android:textSize="12sp" />
@@ -464,8 +464,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:drawableTop="@mipmap/ic_obligation_nor"
-                    android:drawablePadding="5dp"
+                    android:drawableTop="@mipmap/ic_repair_nor"
+                    android:drawablePadding="13dp"
                     android:text="我的报修"
                     android:textColor="@color/color_first_text"
                     android:textSize="12sp" />
@@ -485,8 +485,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:drawableTop="@mipmap/ic_obligation_nor"
-                    android:drawablePadding="5dp"
+                    android:drawableTop="@mipmap/ic_in_nor"
+                    android:drawablePadding="13dp"
                     android:text="申请入驻"
                     android:textColor="@color/color_first_text"
                     android:textSize="12sp" />

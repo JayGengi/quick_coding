@@ -89,6 +89,36 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
+        <!-- 订单消息 -->
+        <activity
+            android:name=".ui.activity.home.MessageActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 报修消息 -->
+        <activity
+            android:name=".ui.activity.home.RepairMessageActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 我的资产 -->
+        <activity
+            android:name=".ui.activity.home.AssetMessageActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 系统公告 -->
+        <activity
+            android:name=".ui.activity.home.SystemNoticeActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 精选活动 -->
+        <activity
+            android:name=".ui.activity.home.ActivityMessageActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

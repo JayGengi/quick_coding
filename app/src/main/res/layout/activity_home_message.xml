@@ -35,9 +35,9 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         >
-                        <!--我的收藏-->
+                        <!--订单消息-->
                         <LinearLayout
-                            android:id="@+id/mine_collection"
+                            android:id="@+id/oreder_lay"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -56,9 +56,9 @@
                                 android:textSize="15sp" />
                         </LinearLayout>
 
-                        <!--地址管理-->
+                        <!--报修消息-->
                         <LinearLayout
-                            android:id="@+id/mine_address"
+                            android:id="@+id/repair_lay"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -77,9 +77,9 @@
                                 android:textSize="15sp" />
                         </LinearLayout>
 
-                        <!--我的团队-->
+                        <!--我的资产-->
                         <LinearLayout
-                            android:id="@+id/mine_team"
+                            android:id="@+id/asset_lay"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -110,6 +110,7 @@
                     android:background="@color/common_color_line"
                     />
                 <LinearLayout
+                    android:id="@+id/activity_lay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
@@ -171,6 +172,7 @@
                     android:background="@color/common_color_line"
                     />
                 <LinearLayout
+                    android:id="@+id/system_lay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
