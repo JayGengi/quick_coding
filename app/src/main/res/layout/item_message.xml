@@ -48,7 +48,7 @@
                 android:id="@+id/order_img"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@mipmap/ic_error" />
+                android:src="@mipmap/bangbangtang" />
 
             <TextView
                 android:id="@+id/title"

@@ -6,10 +6,17 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
+import com.guoxun.airbaba.mvp.model.bean.MenuEntity
 import com.guoxun.airbaba.ui.adapter.home.HomeMenuAdapter
 import com.guoxun.airbaba.ui.adapter.home.HomeTypeShopAdapter
+import com.guoxun.airbaba.utils.BannerImageLoader
+import com.guoxun.airbaba.utils.picture.ImagePreviewUtils
 import com.guoxun.airbaba.widget.GridSpacingItemDecoration
+import com.youth.banner.BannerConfig
+import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.fragment_home_type.*
+import kotlinx.android.synthetic.main.fragment_home_type.banner
+import kotlinx.android.synthetic.main.fragment_home_type.recycler_shop
 import java.util.ArrayList
 
 /**
@@ -22,11 +29,12 @@ import java.util.ArrayList
 class HomeTypeFragment : BaseFragment() {
 
 
-    private var menuList = ArrayList<String>()
+    private var menuList = ArrayList<MenuEntity>()
+    private var menu = MenuEntity()
     private val mAdapter by lazy { activity?.let { HomeMenuAdapter( menuList) } }
 
     private var shopList = ArrayList<String>()
-    private val shopAdapter by lazy { activity?.let { HomeTypeShopAdapter( menuList) } }
+    private val shopAdapter by lazy { activity?.let { HomeTypeShopAdapter( shopList) } }
 
     override fun getLayoutId(): Int = R.layout.fragment_home_type
 
@@ -53,11 +61,35 @@ class HomeTypeFragment : BaseFragment() {
             adapter = mAdapter
         }
         menuList.clear()
-        menuList.add("休闲食品")
-        menuList.add("粮油调味")
-        menuList.add("酒水饮料")
-        menuList.add("方便速食")
-        menuList.add("糖果")
+        menu = MenuEntity()
+        menu.apply {
+            name = "签到"
+            icon = R.mipmap.ic_sign_nor
+        }
+        menuList.add(menu)
+        menu = MenuEntity()
+        menu.apply {
+            name = "空气商城"
+            icon = R.mipmap.ic_airmall_nor
+        }
+        menuList.add(menu)
+        menu = MenuEntity()
+        menu.apply {
+            name = "我要报修"
+            icon = R.mipmap.ic_repair_nor
+        }
+        menuList.add(menu)
+        menu.apply {
+            name = "积分换购"
+            icon = R.mipmap.icintegral_nor
+        }
+        menuList.add(menu)
+        menu = MenuEntity()
+        menu.apply {
+            name = "优惠活动"
+            icon = R.mipmap.ic_activity_nor
+        }
+        menuList.add(menu)
         mAdapter?.setNewData(menuList)
 
 
@@ -78,6 +110,32 @@ class HomeTypeFragment : BaseFragment() {
         shopList.add("方便速食")
         shopList.add("糖果")
         shopAdapter?.setNewData(shopList)
+
+        val baseList = ArrayList<String>()
+        baseList.add("https://gw.alicdn.com/tps/TB1W_X6OXXXXXcZXVXXXXXXXXXX-400-400.png")
+        baseList.add("https://ws1.sinaimg.cn/large/0065oQSqgy1fxno2dvxusj30sf10nqcm.jpg")
+        initBanner(baseList)
+    }
+
+    private fun initBanner(bannerList: List<String>) {
+        banner.setOnBannerListener { position1 ->
+            context?.let { ImagePreviewUtils.largerView(it, position1, bannerList) }
+        }
+        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR)
+        banner.setImageLoader(BannerImageLoader())
+        //设置图片集合
+        banner.setImages(bannerList)
+        //设置banner动画效果
+        banner.setBannerAnimation(Transformer.Default)
+        //设置自动轮播，默认为true
+        banner.isAutoPlay(true)
+        //设置轮播时间
+        banner.setDelayTime(3000)
+        //设置指示器位置（当banner模式中有指示器时）
+        banner.setIndicatorGravity(BannerConfig.CENTER)
+        //banner设置方法全部调用完毕时最后调用
+        banner.start()
+
     }
     private fun loadData(){
 

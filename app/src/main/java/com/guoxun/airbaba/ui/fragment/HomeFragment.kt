@@ -10,6 +10,7 @@ import com.guoxun.airbaba.ui.activity.home.HomeMessageActivity
 import com.guoxun.airbaba.ui.adapter.HomePageAdapter
 import com.guoxun.airbaba.ui.fragment.home.HomeIndexFragment
 import com.guoxun.airbaba.ui.fragment.home.HomeTypeFragment
+import com.guoxun.airbaba.utils.DensityUtil
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
@@ -45,24 +46,30 @@ class HomeFragment : BaseFragment() , View.OnClickListener{
         real_lib_lay.layoutParams.height = QMUIStatusBarHelper.getStatusbarHeight(context)
 //        initTopSearch()
         fragments.add(HomeIndexFragment())
-        fragments.add(HomeTypeFragment.newInstance("类型"))
-        fragments.add(HomeTypeFragment.newInstance("类型"))
-        fragments.add(HomeTypeFragment.newInstance("类型"))
-        fragments.add(HomeTypeFragment.newInstance("类型"))
-        fragments.add(HomeTypeFragment.newInstance("类型"))
+        fragments.add(HomeTypeFragment.newInstance("空气能家用"))
+        fragments.add(HomeTypeFragment.newInstance("空气能商用"))
+        fragments.add(HomeTypeFragment.newInstance("环保"))
+        fragments.add(HomeTypeFragment.newInstance("空气能特供"))
+        fragments.add(HomeTypeFragment.newInstance("配件"))
+        fragments.add(HomeTypeFragment.newInstance("空气动力"))
+        fragments.add(HomeTypeFragment.newInstance("工具"))
+        fragments.add(HomeTypeFragment.newInstance("手机数码"))
         titles.add("首页")
-        titles.add("类型1")
-        titles.add("类型2")
-        titles.add("类型3")
-        titles.add("类型4")
-        titles.add("类型5")
+        titles.add("空气能家用")
+        titles.add("空气能商用")
+        titles.add("环保")
+        titles.add("空气能特供")
+        titles.add("配件")
+        titles.add("空气动力")
+        titles.add("工具")
+        titles.add("手机数码")
         viewpager.adapter = HomePageAdapter(childFragmentManager).apply {
             setData(fragments,titles)
         }
         viewpager.offscreenPageLimit = 4
 
         sliding_tabs.setViewPager(viewpager)
-
+        sliding_tabs.setLeftRightMargin(DensityUtil.dip2px(context, 120f))
         message_lay.setOnClickListener(this)
     }
     private fun loadData(){

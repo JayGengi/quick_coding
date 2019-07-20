@@ -26,7 +26,7 @@
                 android:layout_height="21dp"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="15dp"
-                android:background="@mipmap/ic_message_nor"
+                android:background="@mipmap/ic_message_nor_white"
                 android:scaleType="centerCrop" />
         </RelativeLayout>
 
@@ -80,7 +80,7 @@
                 android:id="@+id/head"
                 android:layout_width="52dp"
                 android:layout_height="52dp"
-                android:background="@mipmap/ic_error"
+                android:background="@mipmap/img_head_portrait_nor"
                 android:scaleType="centerCrop" />
 
                 <TextView

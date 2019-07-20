@@ -14,7 +14,7 @@
     <ImageView
         android:layout_width="151dp"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_error"
+        android:src="@mipmap/bangbangtang"
         />
         <TextView
             android:id="@+id/title"
@@ -23,7 +23,7 @@
             android:padding="6dp"
             android:lines="1"
             android:ellipsize="end"
-            android:text="sadsadsadsad"
+            android:text="念食安含特价初榨混..."
             android:textColor="@color/color_first_text"
             android:textSize="15sp"
             />
@@ -33,7 +33,7 @@
             android:paddingStart="6dp"
             android:lines="1"
             android:ellipsize="end"
-            android:text="sadsadsadsad"
+            android:text="西班牙进口原油"
             android:textColor="@color/color_second_text"
             android:textSize="12sp"
             />

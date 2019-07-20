@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:scaleType="centerCrop"
                 android:layout_height="140dp"
-                android:src="@drawable/bg_nor"
+                android:src="@drawable/welcome"
                 />
 
             <TextView

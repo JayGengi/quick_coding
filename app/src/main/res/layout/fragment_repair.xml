@@ -16,6 +16,7 @@
         android:layout_below="@+id/topbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"
         android:scrollbars="none">
         <com.classic.common.MultipleStatusView
             android:id="@+id/multipleStatusView"
@@ -31,7 +32,11 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingBottom="10dp">
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/common_color_line"
+                    />
                 <LinearLayout style="@style/repair_layout">
 
                     <TextView
@@ -137,7 +142,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="33dp"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="40dp"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
                     android:paddingStart="35dp"
