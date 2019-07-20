@@ -127,8 +127,16 @@
 
         <!-- 商品分类 -->
         <activity
-            android:name=".ui.activity.home.shop.ShopTypeActivity"
+            android:name=".ui.activity.home.goods.GoodsTypeActivity"
             android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:screenOrientation="portrait" />
+
+        <!-- 商品列表 -->
+        <activity
+            android:name=".ui.activity.home.goods.GoodsListActivity"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan|stateHidden"
             android:screenOrientation="portrait" />
 
     </application>

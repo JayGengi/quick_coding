@@ -1,5 +1,6 @@
-package com.guoxun.airbaba.ui.activity.home.shop
+package com.guoxun.airbaba.ui.activity.home.goods
 
+import android.content.Intent
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -11,15 +12,14 @@ import com.guoxun.airbaba.mvp.model.bean.MenuEntity
 import com.guoxun.airbaba.mvp.model.bean.MySection
 import com.guoxun.airbaba.mvp.model.bean.ShopLeftEntity
 import com.guoxun.airbaba.showToast
+import com.guoxun.airbaba.ui.activity.home.HomeFactoryOutletActivity
 import com.guoxun.airbaba.ui.adapter.home.SectionAdapter
 import com.guoxun.airbaba.ui.adapter.home.ShopTypeLeftAdapter
 import com.guoxun.airbaba.utils.BannerImageLoader
 import com.guoxun.airbaba.utils.picture.ImagePreviewUtils
-import com.guoxun.airbaba.widget.GridSpacingItemDecoration
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.activity_shop_type.*
-import kotlinx.android.synthetic.main.activity_shop_type.banner
 
 /**
  * @des    商品分类
@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.activity_shop_type.banner
  * @data 2018/12/19 13:59
  * @email JayGengi@163.com
  */
-class ShopTypeActivity : BaseActivity() {
+class GoodsTypeActivity : BaseActivity() {
 
     private var leftEntity = ArrayList<ShopLeftEntity>()
     private val mAdapter by lazy { ShopTypeLeftAdapter(leftEntity) }
@@ -109,7 +109,7 @@ class ShopTypeActivity : BaseActivity() {
             setHasFixedSize(true)
             isNestedScrollingEnabled = false
             layoutManager = GridLayoutManager(context,3)
-            addItemDecoration(GridSpacingItemDecoration(5,5,true))
+//            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         }
 
         mData.clear()
@@ -156,6 +156,11 @@ class ShopTypeActivity : BaseActivity() {
         val rightAdapter = SectionAdapter(R.layout.item_shop_type_right, R.layout.item_shop_type_right_head, mData)
 
         flow_layout.adapter = rightAdapter
+
+        rightAdapter.setOnItemClickListener { adapter, view, position ->
+            startActivity(Intent(this, GoodsListActivity::class.java))
+
+        }
 
         loadData()
     }
