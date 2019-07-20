@@ -10,6 +10,7 @@ import com.guoxun.airbaba.ui.activity.home.DiscountsActActivity
 import com.guoxun.airbaba.ui.activity.home.HomeFactoryOutletActivity
 import com.guoxun.airbaba.ui.activity.home.HomeFreeDesignActivity
 import com.guoxun.airbaba.ui.activity.home.HomeMenuMainActivity
+import com.guoxun.airbaba.ui.activity.home.shop.ShopTypeActivity
 import com.guoxun.airbaba.ui.adapter.home.HomeMenuAdapter
 import com.guoxun.airbaba.ui.adapter.home.HomeSelectAdapter
 import com.guoxun.airbaba.ui.adapter.home.HomeShopAdapter
@@ -133,7 +134,7 @@ class HomeIndexFragment : BaseFragment() {
                 }
                 //空气商城
                 4 ->{
-
+                    startActivity(Intent(context, ShopTypeActivity::class.java))
                 }
                 //我要报修
                 5 ->{
