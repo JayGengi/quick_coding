@@ -30,9 +30,9 @@ class DiscountsActActivity : BaseActivity(){
     }
 
     override fun initView() {
-//        val bundle = intent.extras
-//        val title = bundle.getString("title")
-        mTopBar.setTitle("优惠活动")
+        val bundle = intent.extras
+        val title = bundle.getString("title")
+        mTopBar.setTitle(title)
         mTopBar.addLeftBackImageButton().setOnClickListener { finish() }
         mLayoutStatusView = multipleStatusView
 

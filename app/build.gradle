@@ -167,4 +167,10 @@ dependencies {
 
     // 图片剪裁
     implementation 'com.github.yalantis:ucrop:2.2.2'
+
+    //张鸿洋老哥的流式布局，支持单选、多选
+    implementation 'com.hyman:flowlayout-lib:1.1.2'
+
+    //商品、详情、评价切换的控件
+    implementation 'com.gxz.pagerslidingtabstrip:library:1.3'
 }

@@ -10,6 +10,7 @@ import com.guoxun.airbaba.ui.activity.home.DiscountsActActivity
 import com.guoxun.airbaba.ui.activity.home.HomeFactoryOutletActivity
 import com.guoxun.airbaba.ui.activity.home.HomeFreeDesignActivity
 import com.guoxun.airbaba.ui.activity.home.HomeMenuMainActivity
+import com.guoxun.airbaba.ui.activity.home.goods.GoodsDetailsActivity
 import com.guoxun.airbaba.ui.activity.home.goods.GoodsTypeActivity
 import com.guoxun.airbaba.ui.adapter.home.HomeMenuAdapter
 import com.guoxun.airbaba.ui.adapter.home.HomeSelectAdapter
@@ -147,7 +148,8 @@ class HomeIndexFragment : BaseFragment() {
                 }
                 //优惠活动
                 7 ->{
-                    startActivity(Intent(context, DiscountsActActivity::class.java))
+                    bundle.putString("title","优惠活动")
+                    startActivity(Intent(context, DiscountsActActivity::class.java).putExtras(bundle))
                 }
             }
         }
@@ -181,7 +183,9 @@ class HomeIndexFragment : BaseFragment() {
         }
         selectList.add(menu)
         selectAdapter?.setNewData(selectList)
-
+        selectAdapter!!.setOnItemClickListener { adapter, view, position ->
+            startActivity(Intent(context, GoodsDetailsActivity::class.java))
+        }
 
         recycler_shop.apply {
             setHasFixedSize(true)
@@ -196,6 +200,9 @@ class HomeIndexFragment : BaseFragment() {
         shopList.add("名称")
         shopList.add("名称")
         shopAdapter?.setNewData(shopList)
+        shopAdapter!!.setOnItemClickListener { adapter, view, position ->
+            startActivity(Intent(context, GoodsDetailsActivity::class.java))
+        }
         val baseList = ArrayList<String>()
         baseList.add("https://gw.alicdn.com/tps/TB1W_X6OXXXXXcZXVXXXXXXXXXX-400-400.png")
         baseList.add("https://ws1.sinaimg.cn/large/0065oQSqgy1fxno2dvxusj30sf10nqcm.jpg")

@@ -1,11 +1,17 @@
 package com.guoxun.airbaba.ui.activity.home.goods
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
+import android.support.annotation.RequiresApi
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.View
+import android.view.Window
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import com.guoxun.airbaba.R
@@ -17,6 +23,8 @@ import com.qmuiteam.qmui.alpha.QMUIAlphaImageButton
 import kotlinx.android.synthetic.main.activity_home_message.multipleStatusView
 import kotlinx.android.synthetic.main.activity_goods_list.*
 import android.widget.Toast
+import com.guoxun.airbaba.window.GoodsScreenWindow
+import com.hwangjr.rxbus.annotation.Subscribe
 import com.qmuiteam.qmui.widget.dialog.QMUIBottomSheet
 
 
@@ -27,7 +35,7 @@ import com.qmuiteam.qmui.widget.dialog.QMUIBottomSheet
   * 2019/7/19 0019 下午 4:37
   * @email jaygengiii@gmail.com
   */
-class GoodsListActivity : BaseActivity(){
+class GoodsListActivity : BaseActivity() ,View.OnClickListener{
     private var baseList = ArrayList<String>()
 
     private var rightButton : QMUIAlphaImageButton? = null
@@ -35,6 +43,8 @@ class GoodsListActivity : BaseActivity(){
     //true一行两个 false 一行一个
     private var isHorizontal : Boolean = true
     private var mAdapter= GoodsListAdapter(R.layout.item_goods,baseList)
+
+    private var popupWindow: GoodsScreenWindow? = null
 //    private val mPresenter by lazy { FansListPresenter() }
 //
 //    init {
@@ -106,7 +116,7 @@ class GoodsListActivity : BaseActivity(){
          * OnItemClickListener
          * */
         mAdapter.setOnItemClickListener { adapter, view, position ->
-            startActivity(Intent(this, GoodsListActivity::class.java))
+            startActivity(Intent(this, GoodsDetailsActivity::class.java))
         }
         /**
          * OnItemChildClickListener
@@ -119,6 +129,10 @@ class GoodsListActivity : BaseActivity(){
             }
         }
 
+        zonghe.setOnClickListener(this)
+        xiaoliang.setOnClickListener(this)
+        jiage.setOnClickListener(this)
+        shaixuan.setOnClickListener(this)
     }
 
     override fun start() {
@@ -131,8 +145,37 @@ class GoodsListActivity : BaseActivity(){
 //        map["p"] = CURRENT_PAGE
 //        mPresenter.requestFansListInfo(map)
     }
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
+    @SuppressLint("RtlHardcoded")
+    override fun onClick(v: View) {
+        when(v.id){
+            R.id.zonghe ->{
+            }
+            R.id.xiaoliang ->{
+            }
+            R.id.jiage ->{
+            }
+            R.id.shaixuan ->{
+//                dlShow.openDrawer(Gravity.RIGHT)
+//                startActivity(Intent(this, ActivityMessageActivity::class.java))
 
-
+                //PopWindow只初始化
+                if (popupWindow == null) {
+                    popupWindow = GoodsScreenWindow(this)
+                }
+//                popupWindow!!.setBackgroundDrawable(ColorDrawable())
+                popupWindow!!.showAsDropDown(zonghe)
+//                popupWindow!!.showAsDropDown(layoutInflater.inflate(R.layout.activity_goods_list, null), Gravity.RIGHT, 0, 500)
+            }
+        }
+    }
+    override fun onBackPressed() {
+        if (popupWindow!=null && popupWindow!!.isShowing) {
+            popupWindow!!.dismiss()
+        } else {
+            super.onBackPressed()
+        }
+    }
     private fun showSimpleBottomSheetGrid() {
         val TAG_SHARE_WECHAT_FRIEND = 0
         val TAG_SHARE_WECHAT_MOMENT = 1
@@ -158,6 +201,23 @@ class GoodsListActivity : BaseActivity(){
                 }
                 .build().show()
     }
+
+
+    /**
+     * @des    RxBus订阅事件[解耦]
+     * @auther JayGengi
+     * @data 2018/12/7 12:00
+     * @email JayGengi@163.com
+     */
+//    @Subscribe
+//    fun wrapPopEvent(event: WrapPopWindowEvent) {
+//        if (event.choose) {
+//            //根据popWindow选中的数据显示相对应的页面
+//
+//        } else {
+//
+//        }
+//    }
 //    override fun showFansListInfo(dataInfo: FansListEntity) {
 //        multipleStatusView?.showContent()
 //        mAdapter.run {
