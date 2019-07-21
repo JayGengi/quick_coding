@@ -145,6 +145,12 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
+        <!-- 商品优惠列表 -->
+        <activity
+            android:name=".ui.activity.home.goods.GoodsDiscountsActActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

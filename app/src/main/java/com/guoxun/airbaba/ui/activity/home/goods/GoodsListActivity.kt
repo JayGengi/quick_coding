@@ -24,7 +24,6 @@ import kotlinx.android.synthetic.main.activity_home_message.multipleStatusView
 import kotlinx.android.synthetic.main.activity_goods_list.*
 import android.widget.Toast
 import com.guoxun.airbaba.window.GoodsScreenWindow
-import com.hwangjr.rxbus.annotation.Subscribe
 import com.qmuiteam.qmui.widget.dialog.QMUIBottomSheet
 
 

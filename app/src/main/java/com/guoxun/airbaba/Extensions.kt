@@ -1,5 +1,6 @@
 package com.guoxun.airbaba
 
+import android.app.Activity
 import android.content.Context
 import android.support.v4.app.Fragment
 import android.view.View
@@ -63,6 +64,19 @@ fun Context.dataFormat(total: Long): String {
         (Math.round(mSpeed * 100) / 100.0).toString() + " MB"
     }
     return result
+}
+
+/**
+ * 设置添加屏幕的背景透明度
+ * @param bgAlpha
+ * 屏幕透明度0.0-1.0 1表示完全不透明
+ */
+fun setBackgroundAlpha(act : Activity,bgAlpha: Float) {
+    val lp = (act).window?.attributes
+    if (lp != null) {
+        lp.alpha = bgAlpha
+    }
+    (act).window!!.attributes = lp
 }
 
 

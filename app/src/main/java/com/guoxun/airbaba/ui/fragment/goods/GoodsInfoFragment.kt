@@ -1,15 +1,24 @@
 package com.guoxun.airbaba.ui.fragment.goods
 
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.PopupWindow
 import android.widget.TextView
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
-import com.guoxun.airbaba.mvp.model.bean.MenuEntity
+import com.guoxun.airbaba.setBackgroundAlpha
+import com.guoxun.airbaba.ui.adapter.home.DiscountsActAdapter
 import com.guoxun.airbaba.ui.adapter.home.GoodsDetailAdapter
-import com.guoxun.airbaba.ui.adapter.home.HomeMenuAdapter
 import com.guoxun.airbaba.utils.BannerImageLoader
 import com.guoxun.airbaba.utils.picture.ImagePreviewUtils
 import com.guoxun.airbaba.widget.GridSpacingItemDecoration
@@ -18,13 +27,15 @@ import com.youth.banner.Transformer
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
 import kotlinx.android.synthetic.main.fragment_goods_info.*
-import java.util.ArrayList
+import java.util.*
+
 
 /**
   *   商品详情基本信息
   * @auther JayGengi
   * 2019/7/21  11:45
   * @email jaygengiii@gmail.com
+ *
   */
 class GoodsInfoFragment : BaseFragment(), View.OnClickListener {
 
@@ -32,6 +43,8 @@ class GoodsInfoFragment : BaseFragment(), View.OnClickListener {
     private var baseList = ArrayList<String>()
     private val mAdapter by lazy { activity?.let { GoodsDetailAdapter( baseList) } }
 
+    private var discountsList = ArrayList<String>()
+    private val discountsAdapter by lazy { DiscountsActAdapter(discountsList) }
     companion object {
         fun getInstance(title: String): GoodsInfoFragment {
             val fragment = GoodsInfoFragment()
@@ -72,6 +85,8 @@ class GoodsInfoFragment : BaseFragment(), View.OnClickListener {
         baseList.add("1")
         baseList.add("1")
         mAdapter!!.setNewData(baseList)
+
+        goods_discount.setOnClickListener(this)
     }
 
     private fun initBanner(bannerList: List<String>) {
@@ -112,16 +127,52 @@ class GoodsInfoFragment : BaseFragment(), View.OnClickListener {
             }
         }
     }
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onClick(v: View) {
+        val bundle = Bundle()
         when(v.id){
-//            R.id.ll_pull_up ->{
-//                //上拉查看图文详情
-//                sv_switch.smoothOpen(true)
-//            }
+            R.id.goods_discount ->{
+                openPop()
+            }
         }
     }
 
 
+    /** 弹出底部对话框 */
+    private fun openPop(){
+        val popView : View  = LayoutInflater . from (context).inflate(
+                R.layout.window_goods_discounts_act, null)
+        val rootView :View  = popView.findViewById (R.id.multipleStatusView) // 當前頁面的根佈局
+        val cancel :TextView  = popView.findViewById (R.id.cancel)
+        val recycler :RecyclerView  = popView.findViewById (R.id.recycler)
+        val popupWindow  = PopupWindow (popView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        activity?.let { setBackgroundAlpha(it,0.5f) }//设置屏幕透明度
+        popupWindow.setBackgroundDrawable(ColorDrawable())
+        popupWindow.isFocusable = true// 点击空白处时，隐藏掉pop窗口
+        // 顯示在根佈局的底部
+        popupWindow.showAtLocation(rootView, Gravity.BOTTOM , 0,0)
+        popupWindow.setOnDismissListener {
+            // popupWindow隐藏时恢复屏幕正常透明度
+            activity?.let { setBackgroundAlpha(it,1f) }//设置屏幕透明度
+        }
+        cancel.setOnClickListener {
+            popupWindow.dismiss()
+        }
+        recycler.apply {
+            setHasFixedSize(true)
+            isNestedScrollingEnabled = false
+            layoutManager = LinearLayoutManager(context)
+            //android自带分割线
+            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+            adapter = discountsAdapter
+        }
+        discountsList.clear()
+        discountsList.add("￥40")
+        discountsList.add("￥50")
+        discountsList.add("￥60")
+        discountsAdapter.setNewData(discountsList)
+    }
 
 
-}
+
+    }
