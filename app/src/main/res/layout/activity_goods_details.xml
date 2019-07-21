@@ -60,6 +60,27 @@
                     app:pstsUnderlineHeight="0dp" />
             </LinearLayout>
 
+            <ImageView
+                android:id="@+id/share"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:scaleType="centerCrop"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp"
+                android:src="@mipmap/ic_share_nor"
+                />
+            <ImageView
+                android:id="@+id/gp_shop_car"
+                android:layout_toStartOf="@+id/share"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:scaleType="centerCrop"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="18dp"
+                android:src="@mipmap/ic_shoppingcart_nor"
+                />
+
         </RelativeLayout>
     </LinearLayout>
 
@@ -68,4 +89,60 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
+    
+    <RelativeLayout
+        android:id="@+id/bom_lay"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        >
+        <TextView
+            android:id="@+id/store_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="店铺"
+            android:drawableTop="@mipmap/ic_store_nor"
+            android:drawablePadding="2dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="17dp"
+            android:textSize="12sp"
+            android:textColor="@color/color_first_text"
+            android:layout_marginBottom="8dp"
+            />
+
+        <TextView
+            android:id="@+id/service"
+            android:layout_toEndOf="@+id/store_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="客服"
+            android:drawableTop="@mipmap/ic_customerservice_nor"
+            android:drawablePadding="2dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="30dp"
+            android:textSize="12sp"
+            android:textColor="@color/color_first_text"
+            android:layout_marginBottom="8dp"
+            />
+
+        <ImageView
+            android:id="@+id/buy"
+            android:layout_width="122dp"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/bg_goods_detail_buy_bt"
+            />
+        <ImageView
+            android:id="@+id/add_shop_car"
+            android:layout_toStartOf="@+id/buy"
+            android:layout_width="122dp"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="12dp"
+            android:src="@drawable/bg_goods_detail_shop_bt"
+            />
+
+    </RelativeLayout>
 </LinearLayout>
