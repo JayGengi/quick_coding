@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:zhy="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_color_line"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
+        <!--头像-->
+        <RelativeLayout
+            android:id="@+id/per_head_lay"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorPrimary"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp">
+
+
+            <TextView
+                android:id="@+id/data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="头像"
+                android:textColor="@color/color_first_text"
+                android:textSize="15sp" />
+
+
+            <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+                android:id="@+id/user_img"
+                android:layout_width="61dp"
+                android:layout_height="61dp"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerCrop"
+                app:qmui_border_color="@color/colorPrimary"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/headportrait"
+                app:qmui_border_width="1dp"
+                app:qmui_is_circle="true" />
+
+        </RelativeLayout>
+
+        <!--账号与安全-->
+        <RelativeLayout
+            android:id="@+id/account_lay"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/colorPrimary"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="昵称"
+                android:textColor="@color/color_first_text"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/nike_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="176****1245"
+                android:textColor="@color/color_first_text"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:drawableEnd="@mipmap/ic_common_more"
+                android:drawablePadding="7dp"
+                android:textSize="14sp" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+

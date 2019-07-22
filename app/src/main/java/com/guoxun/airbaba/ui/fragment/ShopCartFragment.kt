@@ -3,7 +3,6 @@ package com.guoxun.airbaba.ui.fragment
 import android.os.Bundle
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_common.*
 
 /**
  * Created by xuhao on 2017/11/9.
@@ -22,10 +21,9 @@ class ShopCartFragment : BaseFragment() {
             return fragment
         }
     }
-    override fun getLayoutId(): Int= R.layout.fragment_common
+    override fun getLayoutId(): Int= R.layout.fragment_shop_car
 
     override fun initView() {
-        content.text = mTitle
 
     }
 

@@ -15,7 +15,7 @@
             android:scaleType="fitXY"
             android:src="@mipmap/bg_personal_center_nor" />
         <RelativeLayout
-            android:id="@+id/qrcode_lay"
+            android:id="@+id/message_lay"
             android:layout_width="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_height="40dp">
@@ -43,7 +43,7 @@
             />
 
         <RelativeLayout
-            android:id="@+id/home_type_lay"
+            android:id="@+id/setting_lay"
             android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -108,6 +108,7 @@
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/qrcode_lay"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
