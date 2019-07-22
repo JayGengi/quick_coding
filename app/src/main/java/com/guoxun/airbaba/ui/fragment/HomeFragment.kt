@@ -7,6 +7,7 @@ import android.view.View
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.ui.activity.home.HomeMessageActivity
+import com.guoxun.airbaba.ui.activity.home.SearchActivity
 import com.guoxun.airbaba.ui.adapter.HomePageAdapter
 import com.guoxun.airbaba.ui.fragment.home.HomeIndexFragment
 import com.guoxun.airbaba.ui.fragment.home.HomeTypeFragment
@@ -70,6 +71,7 @@ class HomeFragment : BaseFragment() , View.OnClickListener{
 
         sliding_tabs.setViewPager(viewpager)
         sliding_tabs.setLeftRightMargin(DensityUtil.dip2px(context, 120f))
+        search_lay.setOnClickListener(this)
         message_lay.setOnClickListener(this)
     }
     private fun loadData(){
@@ -78,6 +80,9 @@ class HomeFragment : BaseFragment() , View.OnClickListener{
 
     override fun onClick(v: View?) {
         when(v!!.id){
+            R.id.search_lay ->{
+                startActivity(Intent(activity, SearchActivity::class.java))
+            }
             R.id.message_lay ->{
                 startActivity(Intent(activity, HomeMessageActivity::class.java))
             }

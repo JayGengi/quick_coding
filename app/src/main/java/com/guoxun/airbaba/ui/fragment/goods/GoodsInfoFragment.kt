@@ -1,5 +1,6 @@
 package com.guoxun.airbaba.ui.fragment.goods
 
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
@@ -17,6 +18,7 @@ import android.widget.TextView
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.setBackgroundAlpha
+import com.guoxun.airbaba.ui.activity.home.goods.MerchantMainActivity
 import com.guoxun.airbaba.ui.adapter.home.DiscountsActAdapter
 import com.guoxun.airbaba.ui.adapter.home.GoodsDetailAdapter
 import com.guoxun.airbaba.utils.BannerImageLoader
@@ -87,6 +89,7 @@ class GoodsInfoFragment : BaseFragment(), View.OnClickListener {
         mAdapter!!.setNewData(baseList)
 
         goods_discount.setOnClickListener(this)
+        merchant_lay.setOnClickListener(this)
     }
 
     private fun initBanner(bannerList: List<String>) {
@@ -134,6 +137,11 @@ class GoodsInfoFragment : BaseFragment(), View.OnClickListener {
             R.id.goods_discount ->{
                 openPop()
             }
+            R.id.merchant_lay ->{
+                bundle.putString("title","玉珠")
+                startActivity(Intent(context, MerchantMainActivity::class.java).putExtras(bundle))
+            }
+
         }
     }
 

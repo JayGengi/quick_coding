@@ -145,11 +145,24 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
-        <!-- 商品优惠列表 -->
+        <!-- 商家 -->
         <activity
-            android:name=".ui.activity.home.goods.GoodsDiscountsActActivity"
+            android:name=".ui.activity.home.goods.MerchantMainActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+
+        <!-- 搜索页 -->
+        <activity
+            android:name=".ui.activity.home.SearchActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 热销商品 -->
+        <activity
+            android:name=".ui.activity.home.goods.GoodsSellHotActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
 
     </application>
 

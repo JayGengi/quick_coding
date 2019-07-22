@@ -158,8 +158,12 @@ class GoodsTypeActivity : BaseActivity() {
         flow_layout.adapter = rightAdapter
 
         rightAdapter.setOnItemClickListener { adapter, view, position ->
-            startActivity(Intent(this, GoodsListActivity::class.java))
-
+            val item : MySection = adapter.getItem(position) as MySection
+            if(item.isHeader){
+                startActivity(Intent(this, GoodsSellHotActivity::class.java))
+            }else{
+                startActivity(Intent(this, GoodsListActivity::class.java))
+            }
         }
 
         loadData()
