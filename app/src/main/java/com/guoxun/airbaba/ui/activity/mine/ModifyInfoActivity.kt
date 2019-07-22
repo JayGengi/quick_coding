@@ -1,29 +1,26 @@
 package com.guoxun.airbaba.ui.activity.mine
 
-import android.content.Intent
 import android.view.View
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_personal_data.*
 
 /**
-  *  个人资料
+  *  昵称
   * @auther JayGengi
   * 2019/7/22  16:04
   * @email jaygengiii@gmail.com
   */
-class PersonalDataActivity : BaseActivity(),View.OnClickListener{
+class ModifyInfoActivity : BaseActivity(),View.OnClickListener{
 
 
     override fun layoutId(): Int {
-        return R.layout.activity_personal_data
+        return R.layout.activity_modify_info
     }
 
     override fun initView() {
-        mTopBar.setTitle("个人资料")
+        mTopBar.setTitle("昵称")
         mTopBar.addLeftBackImageButton().setOnClickListener { finish() }
-        per_head_lay.setOnClickListener(this)
-        nike_lay.setOnClickListener(this)
+        mTopBar.addRightTextButton("保存",R.id.right).setOnClickListener { finish() }
     }
 
     override fun start() {
@@ -31,11 +28,11 @@ class PersonalDataActivity : BaseActivity(),View.OnClickListener{
     }
     override fun onClick(v: View) {
         when(v.id){
-            R.id.per_head_lay ->{
-            }
-            R.id.nike_lay ->{
-                startActivity(Intent(this, ModifyInfoActivity::class.java))
-            }
+//            R.id.per_head_lay ->{
+//            }
+//            R.id.nike_lay ->{
+//                startActivity(Intent(this, RepairMessageActivity::class.java))
+//            }
         }
     }
     override fun initData() {
