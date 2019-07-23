@@ -193,6 +193,12 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
+        <!-- 积分 -->
+        <activity
+            android:name=".ui.activity.mine.IntegralActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
         <!-- 修改新手机号 -->
         <activity
             android:name=".ui.activity.mine.account.ModifyPhoneActivity"
@@ -238,6 +244,12 @@
         <!-- 帮助文章 -->
         <activity
             android:name=".ui.activity.mine.setting.HelpDetailsActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 钱包明细 -->
+        <activity
+            android:name=".ui.activity.mine.WalletDetailActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
     </application>

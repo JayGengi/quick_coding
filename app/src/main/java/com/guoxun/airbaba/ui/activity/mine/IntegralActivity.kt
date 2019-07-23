@@ -4,24 +4,24 @@ import android.content.Intent
 import android.view.View
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_wallet.*
+import kotlinx.android.synthetic.main.activity_integral.*
 
 /**
-  * 钱包
+  * 积分
   * @auther JayGengi
   * 2019/7/23  9:13
   * @email jaygengiii@gmail.com
   */
-class WalletActivity : BaseActivity(),View.OnClickListener{
+class IntegralActivity : BaseActivity(),View.OnClickListener{
 
 
     override fun layoutId(): Int {
-        return R.layout.activity_wallet
+        return R.layout.activity_integral
     }
 
     override fun initView() {
 
-        mTopBar.setTitle("钱包")
+        mTopBar.setTitle("积分")
         mTopBar.addLeftBackImageButton().setOnClickListener { finish() }
         detail.setOnClickListener(this)
     }

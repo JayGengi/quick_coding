@@ -11,6 +11,7 @@ import android.widget.*
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.setBackgroundAlpha
+import com.guoxun.airbaba.ui.activity.mine.IntegralActivity
 import com.guoxun.airbaba.ui.activity.mine.setting.SettingActivity
 import com.guoxun.airbaba.ui.activity.mine.WalletActivity
 import kotlinx.android.synthetic.main.fragment_mine.*
@@ -22,7 +23,6 @@ import kotlinx.android.synthetic.main.fragment_mine.*
   * @email jaygengiii@gmail.com
   */
 class MineFragment : BaseFragment(), View.OnClickListener {
-
 
     private var mTitle: String? = null
     companion object {
@@ -41,6 +41,7 @@ class MineFragment : BaseFragment(), View.OnClickListener {
         qrcode_lay.setOnClickListener(this)
         setting_lay.setOnClickListener(this)
         wallet.setOnClickListener(this)
+        point.setOnClickListener(this)
     }
 
     override fun lazyLoad() {
@@ -60,6 +61,10 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             //钱包
             R.id.wallet ->{
                 startActivity(Intent(context, WalletActivity::class.java))
+            }
+            //积分
+            R.id.point ->{
+                startActivity(Intent(context, IntegralActivity::class.java))
             }
 //            R.id.smartRefreshLayout_url -> {
 //                val intent = Intent(context, WebViewActivity::class.java)
