@@ -1,24 +1,25 @@
 package com.guoxun.airbaba.mvp.model
 
-import com.guoxun.airbaba.mvp.model.bean.ToDayEntity
+import com.guoxun.airbaba.mvp.model.bean.ShopListEntity
+import com.guoxun.airbaba.net.BaseResponse
 import com.guoxun.airbaba.net.RetrofitManager
 import com.guoxun.airbaba.scheduler.SchedulerUtils
 import io.reactivex.Observable
 
 /**
-   * @description: 获取最新一天的干货数据模型
+   * @description: 福利数据模型
    * @author JayGengi
-   * @date  2018/11/14 0014 下午 4:33
+   * @date  2018/11/13 0013 下午 3:35
    * @email jaygengiii@gmail.com
    */
-class ToDayModel {
+class ShopListModel {
 
 
     /**
      * 获取福利数据信息
      */
-    fun getToDayInfo(): Observable<ToDayEntity> {
-        return RetrofitManager.service.getToDayInfo()
+    fun getShopListInfo(page: Int): Observable<ShopListEntity> {
+        return RetrofitManager.service.getShopListInfo(page)
                 .compose(SchedulerUtils.ioToMain())
     }
 }

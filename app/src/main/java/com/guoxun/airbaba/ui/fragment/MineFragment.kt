@@ -42,6 +42,11 @@ class MineFragment : BaseFragment(), View.OnClickListener {
         wallet.setOnClickListener(this)
         point.setOnClickListener(this)
         coupon.setOnClickListener(this)
+        order_lay.setOnClickListener(this)
+        order_o.setOnClickListener(this)
+        order_t.setOnClickListener(this)
+        order_th.setOnClickListener(this)
+        order_f.setOnClickListener(this)
         mine_collection.setOnClickListener(this)
         mine_team.setOnClickListener(this)
         mine_apply.setOnClickListener(this)
@@ -52,6 +57,7 @@ class MineFragment : BaseFragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
+        val bundle = Bundle()
         when(v!!.id) {
             //设置
             R.id.setting_lay ->{
@@ -72,6 +78,30 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             //优惠券
             R.id.coupon ->{
                 startActivity(Intent(context, CouponsActivity::class.java))
+            }
+            //我的订单
+            R.id.order_lay ->{
+                startActivity(Intent(context, MyOrderActivity::class.java))
+            }
+            //待付款
+            R.id.order_o ->{
+                bundle.putInt("position",1)
+                startActivity(Intent(activity, MyOrderActivity::class.java).putExtras(bundle))
+            }
+            //待发货
+            R.id.order_t ->{
+                bundle.putInt("position",2)
+                startActivity(Intent(activity, MyOrderActivity::class.java).putExtras(bundle))
+            }
+            //待收货
+            R.id.order_th ->{
+                bundle.putInt("position",3)
+                startActivity(Intent(activity, MyOrderActivity::class.java).putExtras(bundle))
+            }
+            //待评价
+            R.id.order_f ->{
+                bundle.putInt("position",4)
+                startActivity(Intent(activity, MyOrderActivity::class.java).putExtras(bundle))
             }
             //收藏
             R.id.mine_collection ->{

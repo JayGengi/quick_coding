@@ -1,8 +1,10 @@
 package com.guoxun.airbaba.mvp.presenter
 
 import com.guoxun.airbaba.base.BasePresenter
-import com.guoxun.airbaba.mvp.contract.GirlsContract
-import com.guoxun.airbaba.mvp.model.GirlsModel
+import com.guoxun.airbaba.mvp.contract.ShopListContract
+import com.guoxun.airbaba.mvp.model.ShopListModel
+import com.guoxun.airbaba.mvp.model.bean.ShopListEntity
+import com.guoxun.airbaba.net.exception.ErrorStatus
 import com.guoxun.airbaba.net.exception.ExceptionHandle
 
 
@@ -12,26 +14,24 @@ import com.guoxun.airbaba.net.exception.ExceptionHandle
  * (数据是 Banner 数据和一页数据组合而成的 HomeBean,查看接口然后在分析就明白了)
  */
 
-class GirlsPresenter : BasePresenter<GirlsContract.View>(), GirlsContract.Presenter {
+class ShopListPresenter : BasePresenter<ShopListContract.View>(), ShopListContract.Presenter {
 
 
-
-    private val girlsModel: GirlsModel by lazy {
-
-        GirlsModel()
+    private val girlsModel: ShopListModel by lazy {
+        ShopListModel()
     }
 
-    override fun requestGirlInfo(limit: Int,page: Int) {
+    override fun requestShopListInfo(page: Int) {
         checkViewAttached()
         mRootView?.showLoading()
-        val disposable = girlsModel.getGirlsInfo(limit,page)
-                .subscribe({ girlsList ->
+        val disposable = girlsModel.getShopListInfo(page)
+                .subscribe({ responseInfo ->
                     mRootView?.apply {
                         dismissLoading()
-                        if(!girlsList.isError){
-                            showGirlInfo(girlsList)
+                        if (responseInfo.flag == ErrorStatus.SUCCESS) {
+                            responseInfo.response?.let { showShopListInfo(it) }
                         }else{
-                            showError(ExceptionHandle.errorMsg,ExceptionHandle.errorCode)
+                            responseInfo.msg?.let { showError(it,ExceptionHandle.errorCode) }
                         }
                     }
                 }, { t ->

@@ -8,5 +8,5 @@ package com.guoxun.airbaba.api
    */
 object UrlConstant{
 
-    const val BASE_URL = "http://gank.io/api/"
+    const val BASE_URL = "http://kqbb.vip400.net/"
 }

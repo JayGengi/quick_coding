@@ -13,14 +13,22 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.util.concurrent.TimeUnit
 
- /**
-   * @description: RetrofitManager
-   * @author JayGengi
-   * @date  2018/11/13 0013 下午 2:03
-   * @email jaygengiii@gmail.com
-   */
+/**
+ * @description: RetrofitManager
+ * @author JayGengi
+ * @date  2019/7/23 0013 下午 2:03
+ * @email jaygengiii@gmail.com
+ */
 
 object RetrofitManager{
+    /**
+     * Use JsonReader.setLenient(true) to accept malformed JSON at line 1 column 1
+     * Retrofit2.0在json看起来正确的时候会得到MalformedJsonException？
+     * https://cloud.tencent.com/developer/ask/75245/answer/129920
+     * */
+//     var gson = GsonBuilder()
+//             .setLenient()
+//             .create()
 
     val service: ApiService by lazy (LazyThreadSafetyMode.SYNCHRONIZED){
         getRetrofit().create(ApiService::class.java)
@@ -99,6 +107,7 @@ object RetrofitManager{
 
     }
 
+
     private fun getOkHttpClient(): OkHttpClient {
         //添加一个log拦截器,打印所有的log
         val httpLoggingInterceptor = HttpLoggingInterceptor()
@@ -112,12 +121,12 @@ object RetrofitManager{
         return OkHttpClient.Builder()
                 .addInterceptor(addQueryParameterInterceptor())  //参数添加
                 .addInterceptor(addHeaderInterceptor()) // token过滤
-//              .addInterceptor(addCacheInterceptor())
+//                .addInterceptor(addCacheInterceptor())
                 .addInterceptor(httpLoggingInterceptor) //日志,所有的请求响应度看到
                 .cache(cache)  //添加缓存
-                .connectTimeout(60L, TimeUnit.SECONDS)
-                .readTimeout(60L, TimeUnit.SECONDS)
-                .writeTimeout(60L, TimeUnit.SECONDS)
+                .connectTimeout(120L, TimeUnit.SECONDS)
+                .readTimeout(120L, TimeUnit.SECONDS)
+                .writeTimeout(120L, TimeUnit.SECONDS)
                 .build()
     }
 

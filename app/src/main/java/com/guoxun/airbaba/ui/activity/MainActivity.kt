@@ -51,6 +51,8 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         //目的是为了透明状态栏 ps:QMUI适配的沉浸状态栏，问题根源在这套架构找不到，死办法解决
         mBaseLayout.visibility = View.GONE
+        //首页侧滑关闭[false]
+        setSwipeBackEnable(false)
         initTab()
         tab_layout.currentTab = mIndex
         switchFragment(mIndex)
