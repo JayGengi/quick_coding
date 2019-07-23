@@ -265,9 +265,15 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
-        <!-- 体现 -->
+        <!-- 我的团队 -->
         <activity
-            android:name=".ui.activity.mine.WithdrawalActivity"
+            android:name=".ui.activity.mine.MyTeamActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 申请入驻 -->
+        <activity
+            android:name=".ui.activity.mine.ApplicationInActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 

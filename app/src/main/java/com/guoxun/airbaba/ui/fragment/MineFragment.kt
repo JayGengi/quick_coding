@@ -11,10 +11,8 @@ import android.widget.*
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.setBackgroundAlpha
-import com.guoxun.airbaba.ui.activity.mine.CouponsActivity
-import com.guoxun.airbaba.ui.activity.mine.IntegralActivity
+import com.guoxun.airbaba.ui.activity.mine.*
 import com.guoxun.airbaba.ui.activity.mine.setting.SettingActivity
-import com.guoxun.airbaba.ui.activity.mine.WalletActivity
 import kotlinx.android.synthetic.main.fragment_mine.*
 
 /**
@@ -44,6 +42,8 @@ class MineFragment : BaseFragment(), View.OnClickListener {
         wallet.setOnClickListener(this)
         point.setOnClickListener(this)
         coupon.setOnClickListener(this)
+        mine_team.setOnClickListener(this)
+        mine_apply.setOnClickListener(this)
     }
 
     override fun lazyLoad() {
@@ -71,6 +71,14 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             //优惠券
             R.id.coupon ->{
                 startActivity(Intent(context, CouponsActivity::class.java))
+            }
+            //我的团队
+            R.id.mine_team ->{
+                startActivity(Intent(context, MyTeamActivity::class.java))
+            }
+            //申请入驻
+            R.id.mine_apply ->{
+                startActivity(Intent(context, ApplicationInActivity::class.java))
             }
 //            R.id.smartRefreshLayout_url -> {
 //                val intent = Intent(context, WebViewActivity::class.java)
