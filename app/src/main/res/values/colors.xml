@@ -19,8 +19,6 @@
     <color name="air_color_second_red">#FF4848</color><!--蓝字-->
     <color name="air_color_choose_bg">#EBEBEB</color>
     <color name="air_color_bill">#2CC663</color>
-    <color name="air_color_agent">#FFE08C</color><!--成为代理bg-->
-    <color name="air_color_agent_bt">#FFC636</color><!--成为代理bt-->
     <color name="air_color_yellow_circle">#FFC000</color>
     <color name="air_fans_bg">#c2c2c2</color>
     <color name="air_color_classify">#438A32</color>
