@@ -11,7 +11,6 @@
 
 
     <!--airbaba-->
-    <color name="vcang_primary">#8BC240</color><!-- 第二版主色调-->
     <color name="color_first_text">#222222</color><!-- 一级标题-->
     <color name="color_second_text">#272627</color><!-- 二级标题-->
     <color name="color_assist_text">#999999</color><!--辅助文字-->
