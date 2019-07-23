@@ -24,6 +24,7 @@ class WalletActivity : BaseActivity(),View.OnClickListener{
         mTopBar.setTitle("钱包")
         mTopBar.addLeftBackImageButton().setOnClickListener { finish() }
         detail.setOnClickListener(this)
+        withdrawal.setOnClickListener(this)
     }
 
     override fun start() {
@@ -34,8 +35,10 @@ class WalletActivity : BaseActivity(),View.OnClickListener{
             R.id.detail ->{
                 startActivity(Intent(this, WalletDetailActivity::class.java))
             }
-//            R.id.real_name_lay ->{
-//            }
+            R.id.withdrawal ->{
+                startActivity(Intent(this, WithdrawalActivity::class.java))
+
+            }
         }
     }
     override fun initData() {

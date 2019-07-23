@@ -199,6 +199,18 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
+        <!-- 提现 -->
+        <activity
+            android:name=".ui.activity.mine.WithdrawalActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 优惠券 -->
+        <activity
+            android:name=".ui.activity.mine.CouponsActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
         <!-- 修改新手机号 -->
         <activity
             android:name=".ui.activity.mine.account.ModifyPhoneActivity"
@@ -252,6 +264,14 @@
             android:name=".ui.activity.mine.WalletDetailActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+
+        <!-- 体现 -->
+        <activity
+            android:name=".ui.activity.mine.WithdrawalActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+
     </application>
 
 </manifest>
