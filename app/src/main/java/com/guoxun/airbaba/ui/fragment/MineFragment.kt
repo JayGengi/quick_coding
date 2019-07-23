@@ -11,8 +11,8 @@ import android.widget.*
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.setBackgroundAlpha
-import com.guoxun.airbaba.showToast
-import com.guoxun.airbaba.ui.activity.mine.SettingActivity
+import com.guoxun.airbaba.ui.activity.mine.setting.SettingActivity
+import com.guoxun.airbaba.ui.activity.mine.WalletActivity
 import kotlinx.android.synthetic.main.fragment_mine.*
 
 /**
@@ -40,6 +40,7 @@ class MineFragment : BaseFragment(), View.OnClickListener {
 
         qrcode_lay.setOnClickListener(this)
         setting_lay.setOnClickListener(this)
+        wallet.setOnClickListener(this)
     }
 
     override fun lazyLoad() {
@@ -55,6 +56,10 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             //邀请码
             R.id.qrcode_lay ->{
                 openQRCodePop()
+            }
+            //钱包
+            R.id.wallet ->{
+                startActivity(Intent(context, WalletActivity::class.java))
             }
 //            R.id.smartRefreshLayout_url -> {
 //                val intent = Intent(context, WebViewActivity::class.java)

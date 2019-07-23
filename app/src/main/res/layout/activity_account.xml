@@ -21,9 +21,9 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="vertical">
-            <!--个人资料-->
+            <!--修改登录手机号-->
             <RelativeLayout
-                android:id="@+id/data_lay"
+                android:id="@+id/phone_lay"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
                 android:layout_marginTop="5dp"
@@ -31,36 +31,32 @@
                 android:paddingLeft="14dp"
                 android:paddingRight="14dp">
 
-                <ImageView
-                    android:id="@+id/data_icon"
-                    android:layout_width="15dp"
-                    android:layout_height="17dp"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/ic_install_people" />
-
                 <TextView
-                    android:id="@+id/data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="12dp"
-                    android:layout_toEndOf="@id/data_icon"
-                    android:text="个人资料"
+                    android:text="修改登录手机号"
                     android:textColor="@color/color_first_text"
-                    android:textSize="15sp" />
+                    android:textSize="14sp" />
 
-                <ImageView
-                    android:layout_width="6dp"
-                    android:layout_height="10dp"
+
+                <TextView
+                    android:id="@+id/phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="13815702154"
+                    android:textColor="@color/color_first_text"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/ic_common_more" />
+                    android:drawableEnd="@mipmap/ic_common_more"
+                    android:drawablePadding="10dp"
+                    android:textSize="14sp" />
 
             </RelativeLayout>
 
-            <!--账号与安全-->
+            <!--实名认证-->
             <RelativeLayout
-                android:id="@+id/account_lay"
+                android:id="@+id/real_name_lay"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
                 android:layout_marginTop="1dp"
@@ -68,34 +64,52 @@
                 android:paddingLeft="14dp"
                 android:paddingRight="14dp">
 
-                <ImageView
-                    android:id="@+id/account_icon"
-                    android:layout_width="15dp"
-                    android:layout_height="17dp"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/ic_install_safety" />
-
                 <TextView
-                    android:id="@+id/account"
+                    android:id="@+id/real_name_tip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="12dp"
-                    android:layout_toEndOf="@+id/account_icon"
-                    android:text="账号与安全"
+                    android:text="实名认证"
                     android:textColor="@color/color_first_text"
-                    android:textSize="15sp" />
+                    android:textSize="14sp" />
 
-                <ImageView
-                    android:layout_width="6dp"
-                    android:layout_height="10dp"
+                <TextView
+                    android:id="@+id/real_name_red_p"
+                    android:layout_toEndOf="@+id/real_name_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:text="*"
+                    android:textColor="@color/mine_red"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/real_name"
+                    android:layout_toEndOf="@+id/real_name_red_p"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="张三"
+                    android:textColor="@color/color_first_text"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:id="@+id/real_name_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="已实名"
+                    android:textColor="@color/color_first_text"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/ic_common_more" />
+                    android:drawableEnd="@mipmap/ic_common_more"
+                    android:drawablePadding="10dp"
+                    android:textSize="14sp" />
 
             </RelativeLayout>
 
-            <!--推送通知开关-->
+            <!--绑定银行卡-->
             <RelativeLayout
                 android:id="@+id/push_lay"
                 android:layout_width="match_parent"
@@ -105,92 +119,88 @@
                 android:paddingLeft="14dp"
                 android:paddingRight="14dp">
 
-                <ImageView
-                    android:id="@+id/push_icon"
-                    android:layout_width="15dp"
-                    android:layout_height="17dp"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/ic_install_safety" />
-
                 <TextView
-                    android:id="@+id/push"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="12dp"
-                    android:layout_toEndOf="@+id/push_icon"
-                    android:text="推送通知开关"
+                    android:text="绑定银行卡"
                     android:textColor="@color/color_first_text"
-                    android:textSize="15sp" />
+                    android:textSize="14sp" />
 
-
-            </RelativeLayout>
-
-            <!--WiFi环境下自动播放视频-->
-            <RelativeLayout
-                android:id="@+id/wifi_lay"
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:layout_marginTop="1dp"
-                android:background="@color/colorPrimary"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <ImageView
-                    android:id="@+id/wifi_icon"
-                    android:layout_width="15dp"
-                    android:layout_height="17dp"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/ic_install_safety" />
 
                 <TextView
-                    android:id="@+id/wifi"
+                    android:id="@+id/bank_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="12dp"
-                    android:layout_toEndOf="@+id/wifi_icon"
-                    android:text="WiFi环境下自动播放视频"
+                    android:text="6217 0000 1234 568"
                     android:textColor="@color/color_first_text"
-                    android:textSize="15sp" />
-
-
-            </RelativeLayout>
-
-            <!--关于我们-->
-            <RelativeLayout
-                android:id="@+id/about_us_lay"
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:layout_marginTop="1dp"
-                android:background="@color/colorPrimary"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp">
-
-                <ImageView
-                    android:id="@+id/about_us_icon"
-                    android:layout_width="15dp"
-                    android:layout_height="17dp"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/ic_install_safety" />
-
-                <TextView
-                    android:id="@+id/about_us"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="12dp"
-                    android:layout_toEndOf="@+id/about_us_icon"
-                    android:text="关于我们"
-                    android:textColor="@color/color_first_text"
-                    android:textSize="15sp" />
-
-                <ImageView
-                    android:layout_width="6dp"
-                    android:layout_height="10dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/ic_common_more" />
+                    android:drawableEnd="@mipmap/ic_common_more"
+                    android:drawablePadding="10dp"
+                    android:textSize="14sp" />
+
+
+            </RelativeLayout>
+
+            <!--用户协议-->
+            <RelativeLayout
+                android:id="@+id/user_agreement_lay"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/colorPrimary"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="用户协议"
+                    android:textColor="@color/color_first_text"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:drawableEnd="@mipmap/ic_common_more"
+                    android:drawablePadding="10dp"
+                    android:textSize="14sp" />
+
+
+            </RelativeLayout>
+
+            <!--用户隐私政策-->
+            <RelativeLayout
+                android:id="@+id/privacy_policy_lay"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/colorPrimary"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="用户隐私政策"
+                    android:textColor="@color/color_first_text"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:drawableEnd="@mipmap/ic_common_more"
+                    android:drawablePadding="10dp"
+                    android:textSize="14sp" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

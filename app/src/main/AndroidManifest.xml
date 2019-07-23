@@ -165,25 +165,79 @@
 
         <!-- 设置 -->
         <activity
-            android:name=".ui.activity.mine.SettingActivity"
+            android:name=".ui.activity.mine.setting.SettingActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <!-- 个人资料 -->
         <activity
-            android:name=".ui.activity.mine.PersonalDataActivity"
+            android:name=".ui.activity.mine.setting.PersonalDataActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <!-- 昵称 -->
         <activity
-            android:name=".ui.activity.mine.ModifyInfoActivity"
+            android:name=".ui.activity.mine.setting.ModifyInfoActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <!-- 账户与安全 -->
         <activity
-            android:name=".ui.activity.mine.AccountActivity"
+            android:name=".ui.activity.mine.account.AccountActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 钱包 -->
+        <activity
+            android:name=".ui.activity.mine.WalletActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 修改新手机号 -->
+        <activity
+            android:name=".ui.activity.mine.account.ModifyPhoneActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 实名认证 -->
+        <activity
+            android:name=".ui.activity.mine.account.RealNameActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 绑定银行卡 -->
+        <activity
+            android:name=".ui.activity.mine.account.BankCardActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 用户协议 -->
+        <activity
+            android:name=".ui.activity.mine.account.UserAgreementActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 用户隐私政策 -->
+        <activity
+            android:name=".ui.activity.mine.account.UserPrivacyPolicyActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 关于我们 -->
+        <activity
+            android:name=".ui.activity.mine.setting.AboutUsActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 帮助列表 -->
+        <activity
+            android:name=".ui.activity.mine.setting.HelpListActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 帮助文章 -->
+        <activity
+            android:name=".ui.activity.mine.setting.HelpDetailsActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
     </application>
