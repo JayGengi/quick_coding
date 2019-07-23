@@ -42,6 +42,7 @@ class MineFragment : BaseFragment(), View.OnClickListener {
         wallet.setOnClickListener(this)
         point.setOnClickListener(this)
         coupon.setOnClickListener(this)
+        mine_collection.setOnClickListener(this)
         mine_team.setOnClickListener(this)
         mine_apply.setOnClickListener(this)
     }
@@ -71,6 +72,10 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             //优惠券
             R.id.coupon ->{
                 startActivity(Intent(context, CouponsActivity::class.java))
+            }
+            //收藏
+            R.id.mine_collection ->{
+                startActivity(Intent(context, MyCollectionActivity::class.java))
             }
             //我的团队
             R.id.mine_team ->{

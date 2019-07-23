@@ -277,6 +277,11 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
+        <!-- 我的收藏 -->
+        <activity
+            android:name=".ui.activity.mine.MyCollectionActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
 
     </application>
 
