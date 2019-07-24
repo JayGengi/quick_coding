@@ -1,67 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp">
+
+            <RelativeLayout
+                android:id="@+id/message_lay"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp">
+
+                <ImageView
+                    android:id="@+id/qrcode"
+                    android:layout_width="21dp"
+                    android:layout_height="21dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:background="@mipmap/ic_message_nor"
+                    android:scaleType="centerCrop" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="购物车"
+                android:textColor="@color/color_first_text"
+                android:textSize="18sp"
+
+                />
+            <TextView
+                android:id="@+id/edit"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_toStartOf="@+id/share"
+                android:gravity="center"
+                android:text="編輯"
+                android:layout_marginEnd="15dp"
+                android:textColor="@color/color_assist_text"
+                android:textSize="14sp"
+
+                />
+
+            <ImageView
+                android:id="@+id/share"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:background="@mipmap/ic_share_nor"
+                android:scaleType="centerCrop" />
+
+
+        </RelativeLayout>
+
+        <com.classic.common.MultipleStatusView
+            android:id="@+id/multipleStatusView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:emptyView="@layout/layout_empty_view"
+            app:errorView="@layout/layout_error_view"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:loadingView="@layout/layout_loading_view"
+            app:noNetworkView="@layout/layout_network_view">
+
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                android:id="@+id/refreshLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none" />
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </com.classic.common.MultipleStatusView>
 
         <RelativeLayout
             android:id="@+id/bom_lay"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginBottom="50dp"
             android:layout_gravity="bottom">
 
-            <TextView
-                android:id="@+id/store_bt"
+            <CheckBox
+                android:id="@+id/hide_radius_none"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="17dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="8dp"
-                android:drawableTop="@mipmap/ic_store_nor"
-                android:drawablePadding="2dp"
-                android:text="店铺"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:button="@null"
+                android:checked="true"
+                android:drawableStart="@drawable/checkbox_style"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:text="全选"
                 android:textColor="@color/color_first_text"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/service"
+            <RelativeLayout
+                android:id="@+id/settlement_lay"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="8dp"
-                android:layout_toEndOf="@+id/store_bt"
-                android:drawableTop="@mipmap/ic_customerservice_nor"
-                android:drawablePadding="2dp"
-                android:text="客服"
-                android:textColor="@color/color_first_text"
-                android:textSize="12sp" />
-
-            <ImageView
-                android:id="@+id/buy"
-                android:layout_width="122dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="12dp"
-                android:layout_marginBottom="12dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/bg_goods_detail_buy_bt" />
+                >
 
-            <ImageView
-                android:id="@+id/add_shop_car"
-                android:layout_width="122dp"
+                <RelativeLayout
+                    android:id="@+id/money_lay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toStartOf="@+id/settlement">
+
+                    <TextView
+                        android:id="@+id/all_price_tip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="合计："
+                        android:textColor="@color/color_black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/all_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/all_price_tip"
+                        android:text="￥48.9"
+                        android:textColor="@color/mine_red"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/discounts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:text="优惠：￥2.00"
+                        android:textColor="@color/color_second_text"
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/settlement"
+                    android:layout_width="95dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/btn_close_an_account_nor"
+                    android:gravity="center"
+                    android:text="去结算"
+                    android:textColor="@color/color_white"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/go_pay_lay"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="12dp"
-                android:layout_toStartOf="@+id/buy"
-                android:scaleType="centerCrop"
-                android:src="@drawable/bg_goods_detail_shop_bt" />
+                android:layout_alignParentEnd="true">
+
+                <ImageView
+                    android:id="@+id/buy"
+                    android:layout_width="122dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bg_goods_detail_buy_bt" />
+
+                <ImageView
+                    android:id="@+id/add_shop_car"
+                    android:layout_width="122dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_toStartOf="@+id/buy"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bg_goods_detail_shop_bt" />
+            </RelativeLayout>
 
         </RelativeLayout>
     </LinearLayout>
