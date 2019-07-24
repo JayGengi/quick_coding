@@ -22,10 +22,9 @@ class FreeDesignFragment : BaseFragment() {
             return fragment
         }
     }
-    override fun getLayoutId(): Int= R.layout.fragment_common
+    override fun getLayoutId(): Int= R.layout.fragment_free_design
 
     override fun initView() {
-        content.text = mTitle
     }
 
     override fun lazyLoad() {
