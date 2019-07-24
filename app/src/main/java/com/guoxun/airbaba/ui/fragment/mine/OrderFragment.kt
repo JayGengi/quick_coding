@@ -16,6 +16,7 @@ import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.setBackgroundAlpha
 import com.guoxun.airbaba.ui.activity.mine.order.ApplyAfterSalesActivity
 import com.guoxun.airbaba.ui.activity.mine.order.MyOrderAfterSalesActivity
+import com.guoxun.airbaba.ui.activity.mine.order.MyOrderCommentActivity
 import com.guoxun.airbaba.ui.activity.mine.order.MyOrderDetailsActivity
 import com.guoxun.airbaba.ui.adapter.mine.OrderAdapter
 import kotlinx.android.synthetic.main.common_list.*
@@ -95,7 +96,7 @@ class OrderFragment : BaseFragment(){
                     openPop()
                 }
                 R.id.btn2 ->{
-
+                    startActivity(Intent(context, MyOrderCommentActivity::class.java))
                 }
                 R.id.btn3 ->{
                     startActivity(Intent(context, ApplyAfterSalesActivity::class.java))

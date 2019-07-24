@@ -308,6 +308,12 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
+        <!-- 评价 -->
+        <activity
+            android:name=".ui.activity.mine.order.MyOrderCommentActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

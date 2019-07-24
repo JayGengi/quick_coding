@@ -73,4 +73,12 @@
         <item name="vertical_Space">20dp</item>
         <item name="isFull">false</item>
     </style>
+
+    <!--自定义ratingBar-->
+    <style name="roomRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_drawable</item>
+        <item name="android:minHeight">18dip</item>
+        <item name="android:maxHeight">18dip</item>
+        <item name="android:isIndicator">true</item>
+    </style>
 </resources>
