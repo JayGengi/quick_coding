@@ -1,14 +1,21 @@
 package com.guoxun.airbaba.ui.fragment.mine
 
+import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.PopupWindow
+import android.widget.TextView
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
-import com.guoxun.airbaba.ui.adapter.mine.CollectionGoodsAdapter
-import com.guoxun.airbaba.ui.adapter.mine.CouponsAdapter
+import com.guoxun.airbaba.setBackgroundAlpha
+import com.guoxun.airbaba.ui.activity.mine.MyOrderDetailsActivity
 import com.guoxun.airbaba.ui.adapter.mine.OrderAdapter
-import com.guoxun.airbaba.ui.adapter.mine.WalletInComeAdapter
 import kotlinx.android.synthetic.main.common_list.*
 import java.util.*
 
@@ -67,16 +74,22 @@ class OrderFragment : BaseFragment(){
         baseList.add("3")
         mAdapter!!.setNewData(baseList)
 
+
+        mAdapter!!.setOnItemClickListener { adapter, view, position ->
+            //            val item : FollowListEntity.ListsBean = adapter.getItem(position) as FollowListEntity.ListsBean
+            startActivity(Intent(context, MyOrderDetailsActivity::class.java))
+        }
         /**
          * OnItemClickListener
          * */
-//        mAdapter!!.setOnItemChildClickListener { adapter, view, position ->
+        mAdapter!!.setOnItemChildClickListener { adapter, view, position ->
 //            val item : FollowListEntity.ListsBean = adapter.getItem(position) as FollowListEntity.ListsBean
-//            when(view.id){
-//                R.id.release_tile ->
-//                    repairFollow(item)
-//            }
-//        }
+            when(view.id){
+                R.id.btn1 ->{
+                    openPop()
+                }
+            }
+        }
 
     }
 
@@ -87,6 +100,32 @@ class OrderFragment : BaseFragment(){
 //        map["pnum"] = PAGE_CAPACITY
 //        map["types"] = type.toString()
 //        mPresenter.requestFollowListInfo(map)
+    }
+
+    /** 弹出底部对话框 */
+    private fun openPop(){
+        val popView : View = LayoutInflater . from (context).inflate(
+                R.layout.window_order_cancel, null)
+        val rootView : View = popView.findViewById (R.id.goods_bottom) // 當前頁面的根佈局
+        val cancel : TextView = popView.findViewById (R.id.cancel)
+        val confirm : Button = popView.findViewById (R.id.confirm)
+        val popupWindow  = PopupWindow (popView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        activity?.let { setBackgroundAlpha(it, 0.5f) }//设置屏幕透明度
+        popupWindow.setBackgroundDrawable(ColorDrawable())
+        popupWindow.isFocusable = true// 点击空白处时，隐藏掉pop窗口
+        // 顯示在根佈局的底部
+        popupWindow.showAtLocation(rootView, Gravity.BOTTOM , 0,0)
+        popupWindow.setOnDismissListener {
+            // popupWindow隐藏时恢复屏幕正常透明度
+            activity?.let { setBackgroundAlpha(it, 1f) }//设置屏幕透明度
+        }
+        cancel.setOnClickListener {
+            popupWindow.dismiss()
+        }
+
+        confirm.setOnClickListener {
+            popupWindow.dismiss()
+        }
     }
 //
 //    override fun showFollowListInfo(dataInfo: FollowListEntity) {

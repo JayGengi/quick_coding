@@ -16,6 +16,10 @@ class OrderAdapter(data: List<String>?)
 
     override fun convert(helper: BaseViewHolder, item: String?) {
         item ?: return
+
+        helper.addOnClickListener(R.id.btn1)
+                .addOnClickListener(R.id.btn2)
+                .addOnClickListener(R.id.btn3)
 //        helper.setText(R.id.title, item)
 //                .setImageResource(R.id.img, item.img)
 

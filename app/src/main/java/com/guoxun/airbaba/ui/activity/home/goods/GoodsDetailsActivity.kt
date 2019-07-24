@@ -24,10 +24,10 @@ import kotlinx.android.synthetic.main.activity_goods_details.*
 import java.util.*
 
 /**
-  * 免费设计
+  * @des    商品详情页
   * @auther JayGengi
-  * 2019/7/19 0019 上午 11:09
-  * @email jaygengiii@gmail.com
+  * 2019/7/24  8:44
+  * @email  jaygengiii@gmail.com
   */
 class GoodsDetailsActivity : BaseActivity(),View.OnClickListener{
 
