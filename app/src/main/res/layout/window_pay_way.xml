@@ -76,7 +76,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="选择支付方式"
+                    android:text="支付宝"
                     android:textColor="@color/color_first_text"
                     android:textSize="16sp" />
 
@@ -124,7 +124,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="选择支付方式"
+                    android:text="微信支付"
                     android:textColor="@color/color_first_text"
                     android:textSize="16sp" />
 
@@ -135,7 +135,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:text="使用支付宝付款"
+                    android:text="使用微信付款"
                     android:textColor="@color/color_assist_text"
                     android:textSize="14sp" />
                 <ImageView

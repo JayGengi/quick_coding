@@ -1,5 +1,6 @@
 package com.guoxun.airbaba.ui.fragment
 
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
@@ -8,20 +9,23 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.PopupWindow
 import android.widget.TextView
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.setBackgroundAlpha
+import com.guoxun.airbaba.ui.activity.home.HomeFactoryOutletActivity
+import com.guoxun.airbaba.ui.activity.mine.SettlementActivity
 import com.guoxun.airbaba.ui.adapter.home.ShopCartAdapter
 import kotlinx.android.synthetic.main.fragment_shop_car.*
 import java.util.ArrayList
 
 /**
- * Created by xuhao on 2017/11/9.
- * 我的
- */
+  * @des    购物车
+  * @auther JayGengi
+  * 2019/7/24  16:21
+  * @email  jaygengiii@gmail.com
+  */
 class ShopCartFragment : BaseFragment(), View.OnClickListener {
 
     private var isEditStatus : Boolean = false
@@ -116,6 +120,7 @@ class ShopCartFragment : BaseFragment(), View.OnClickListener {
 
         confirm.setOnClickListener {
             popupWindow.dismiss()
+            startActivity(Intent(context, SettlementActivity::class.java))
 
         }
     }
