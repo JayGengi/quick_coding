@@ -2,27 +2,25 @@ package com.guoxun.airbaba.ui.activity.home.goods
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.support.annotation.RequiresApi
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.Window
+import android.view.*
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
+import android.widget.*
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseActivity
+import com.guoxun.airbaba.setBackgroundAlpha
 import com.guoxun.airbaba.showToast
 import com.guoxun.airbaba.ui.adapter.home.GoodsListAdapter
 import com.guoxun.airbaba.widget.GridSpacingItemDecoration
 import com.qmuiteam.qmui.alpha.QMUIAlphaImageButton
 import kotlinx.android.synthetic.main.activity_home_message.multipleStatusView
 import kotlinx.android.synthetic.main.activity_goods_list.*
-import android.widget.Toast
 import com.guoxun.airbaba.window.GoodsScreenWindow
 import com.qmuiteam.qmui.widget.dialog.QMUIBottomSheet
 
@@ -155,26 +153,26 @@ class GoodsListActivity : BaseActivity() ,View.OnClickListener{
             R.id.jiage ->{
             }
             R.id.shaixuan ->{
+                openPop()
 //                dlShow.openDrawer(Gravity.RIGHT)
 //                startActivity(Intent(this, ActivityMessageActivity::class.java))
-
                 //PopWindow只初始化
-                if (popupWindow == null) {
-                    popupWindow = GoodsScreenWindow(this)
-                }
+//                if (popupWindow == null) {
+//                    popupWindow = GoodsScreenWindow(this)
+//                }
 //                popupWindow!!.setBackgroundDrawable(ColorDrawable())
-                popupWindow!!.showAsDropDown(zonghe)
+//                popupWindow!!.showAsDropDown(zonghe)
 //                popupWindow!!.showAsDropDown(layoutInflater.inflate(R.layout.activity_goods_list, null), Gravity.RIGHT, 0, 500)
             }
         }
     }
-    override fun onBackPressed() {
-        if (popupWindow!=null && popupWindow!!.isShowing) {
-            popupWindow!!.dismiss()
-        } else {
-            super.onBackPressed()
-        }
-    }
+//    override fun onBackPressed() {
+//        if (popupWindow!=null && popupWindow!!.isShowing) {
+//            popupWindow!!.dismiss()
+//        } else {
+//            super.onBackPressed()
+//        }
+//    }
     private fun showSimpleBottomSheetGrid() {
         val TAG_SHARE_WECHAT_FRIEND = 0
         val TAG_SHARE_WECHAT_MOMENT = 1
@@ -201,7 +199,31 @@ class GoodsListActivity : BaseActivity() ,View.OnClickListener{
                 .build().show()
     }
 
+    /** 弹出底部对话框 */
+    private fun openPop(){
+        val popView : View = LayoutInflater . from (this).inflate(
+                R.layout.window_good_screen, null)
+        val rootView : LinearLayout = popView.findViewById (R.id.goods_screen) // 當前頁面的根佈局
+        val reset : TextView = popView.findViewById (R.id.reset)
+        val confirm : TextView = popView.findViewById (R.id.confirm)
+        val popupWindow  = PopupWindow (popView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        setBackgroundAlpha(this, 0.5f)//设置屏幕透明度
+        popupWindow.setBackgroundDrawable(ColorDrawable())
+        popupWindow.isFocusable = true// 点击空白处时，隐藏掉pop窗口
+        // 顯示在根佈局的底部
+        popupWindow.showAtLocation(rootView, Gravity.END , 0,0)
+        popupWindow.setOnDismissListener {
+            // popupWindow隐藏时恢复屏幕正常透明度
+            setBackgroundAlpha(this, 1f)//设置屏幕透明度
+        }
+        reset.setOnClickListener {
+            popupWindow.dismiss()
+        }
 
+        confirm.setOnClickListener {
+            popupWindow.dismiss()
+        }
+    }
     /**
      * @des    RxBus订阅事件[解耦]
      * @auther JayGengi

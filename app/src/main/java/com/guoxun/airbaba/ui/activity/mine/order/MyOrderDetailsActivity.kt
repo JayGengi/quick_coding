@@ -1,4 +1,4 @@
-package com.guoxun.airbaba.ui.activity.mine
+package com.guoxun.airbaba.ui.activity.mine.order
 
 import android.view.View
 import com.guoxun.airbaba.R

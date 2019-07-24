@@ -12,6 +12,7 @@ import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.setBackgroundAlpha
 import com.guoxun.airbaba.ui.activity.mine.*
+import com.guoxun.airbaba.ui.activity.mine.order.MyOrderActivity
 import com.guoxun.airbaba.ui.activity.mine.setting.SettingActivity
 import kotlinx.android.synthetic.main.fragment_mine.*
 

@@ -14,7 +14,9 @@ import android.widget.TextView
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.setBackgroundAlpha
-import com.guoxun.airbaba.ui.activity.mine.MyOrderDetailsActivity
+import com.guoxun.airbaba.ui.activity.mine.order.ApplyAfterSalesActivity
+import com.guoxun.airbaba.ui.activity.mine.order.MyOrderAfterSalesActivity
+import com.guoxun.airbaba.ui.activity.mine.order.MyOrderDetailsActivity
 import com.guoxun.airbaba.ui.adapter.mine.OrderAdapter
 import kotlinx.android.synthetic.main.common_list.*
 import java.util.*
@@ -77,7 +79,11 @@ class OrderFragment : BaseFragment(){
 
         mAdapter!!.setOnItemClickListener { adapter, view, position ->
             //            val item : FollowListEntity.ListsBean = adapter.getItem(position) as FollowListEntity.ListsBean
-            startActivity(Intent(context, MyOrderDetailsActivity::class.java))
+            if(6 == type){
+                startActivity(Intent(context, MyOrderAfterSalesActivity::class.java))
+            }else{
+                startActivity(Intent(context, MyOrderDetailsActivity::class.java))
+            }
         }
         /**
          * OnItemClickListener
@@ -88,6 +94,13 @@ class OrderFragment : BaseFragment(){
                 R.id.btn1 ->{
                     openPop()
                 }
+                R.id.btn2 ->{
+
+                }
+                R.id.btn3 ->{
+                    startActivity(Intent(context, ApplyAfterSalesActivity::class.java))
+                }
+
             }
         }
 

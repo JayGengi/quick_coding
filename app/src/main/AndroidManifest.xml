@@ -285,13 +285,26 @@
 
         <!-- 我的订单 -->
         <activity
-            android:name=".ui.activity.mine.MyOrderActivity"
+            android:name=".ui.activity.mine.order.MyOrderActivity"
             android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan|stateHidden"
             android:screenOrientation="portrait" />
 
         <!-- 我的订单详情 -->
         <activity
-            android:name=".ui.activity.mine.MyOrderDetailsActivity"
+            android:name=".ui.activity.mine.order.MyOrderDetailsActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 申请售后 -->
+        <activity
+            android:name=".ui.activity.mine.order.ApplyAfterSalesActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 售后 -->
+        <activity
+            android:name=".ui.activity.mine.order.MyOrderAfterSalesActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
