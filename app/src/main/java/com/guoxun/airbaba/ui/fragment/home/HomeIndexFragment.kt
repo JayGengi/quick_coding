@@ -6,10 +6,7 @@ import android.support.v7.widget.GridLayoutManager
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.mvp.model.bean.MenuEntity
-import com.guoxun.airbaba.ui.activity.home.DiscountsActActivity
-import com.guoxun.airbaba.ui.activity.home.HomeFactoryOutletActivity
-import com.guoxun.airbaba.ui.activity.home.HomeFreeDesignActivity
-import com.guoxun.airbaba.ui.activity.home.HomeMenuMainActivity
+import com.guoxun.airbaba.ui.activity.home.*
 import com.guoxun.airbaba.ui.activity.home.goods.GoodsDetailsActivity
 import com.guoxun.airbaba.ui.activity.home.goods.GoodsTypeActivity
 import com.guoxun.airbaba.ui.adapter.home.HomeMenuAdapter
@@ -131,7 +128,7 @@ class HomeIndexFragment : BaseFragment() {
                 }
                 //签到
                 3 ->{
-
+                    startActivity(Intent(context, SignInActivity::class.java))
                 }
                 //空气商城
                 4 ->{
@@ -204,12 +201,13 @@ class HomeIndexFragment : BaseFragment() {
             startActivity(Intent(context, GoodsDetailsActivity::class.java))
         }
         val baseList = ArrayList<String>()
-        baseList.add("https://gw.alicdn.com/tps/TB1W_X6OXXXXXcZXVXXXXXXXXXX-400-400.png")
-        baseList.add("https://ws1.sinaimg.cn/large/0065oQSqgy1fxno2dvxusj30sf10nqcm.jpg")
+        baseList.add("https://www.airbaba.cn/data/gallery_album/229/original_img/1556475130887604624.jpg")
+        baseList.add("https://www.airbaba.cn/data/gallery_album/229/original_img/1556475159455662649.jpg")
         initBanner(baseList)
 
         val base2List = ArrayList<String>()
-        base2List.add("https://ws1.sinaimg.cn/large/0065oQSqgy1fxno2dvxusj30sf10nqcm.jpg")
+        base2List.add("https://www.airbaba.cn/data/gallery_album/229/original_img/1556475130887604624.jpg")
+        base2List.add("https://www.airbaba.cn/data/gallery_album/229/original_img/1556475159455662649.jpg")
         initTwoBanner(base2List)
     }
 
@@ -261,3 +259,4 @@ class HomeIndexFragment : BaseFragment() {
 
     }
 }
+

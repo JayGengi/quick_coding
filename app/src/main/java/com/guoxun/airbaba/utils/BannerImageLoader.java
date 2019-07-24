@@ -20,7 +20,7 @@ public class BannerImageLoader extends ImageLoader {
 
         //Glide 加载图片简单用法
 //        Glide.with(context).load(path).into(imageView);
-        GlideUtils.showImageView(context, R.mipmap.ic_error, (String) path,imageView);
+        GlideUtils.showImageView(context, R.mipmap.ic_placeholder_2_1, (String) path,imageView);
     }
 
 }

@@ -65,8 +65,8 @@ class GoodsInfoFragment : BaseFragment(), View.OnClickListener {
 
 //        ll_pull_up.setOnClickListener(this)
         val baseList = ArrayList<String>()
-        baseList.add("https://gw.alicdn.com/tps/TB1W_X6OXXXXXcZXVXXXXXXXXXX-400-400.png")
-        baseList.add("https://ws1.sinaimg.cn/large/0065oQSqgy1fxno2dvxusj30sf10nqcm.jpg")
+        baseList.add("https://www.airbaba.cn/data/gallery_album/229/original_img/1556475130887604624.jpg")
+        baseList.add("https://www.airbaba.cn/data/gallery_album/229/original_img/1556475159455662649.jpg")
         initBanner(baseList)
 
         val proAttributeList = ArrayList<String>()

@@ -113,6 +113,12 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
+        <!-- 签到 -->
+        <activity
+            android:name=".ui.activity.home.SignInActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
         <!-- 精选活动 -->
         <activity
             android:name=".ui.activity.home.ActivityMessageActivity"
