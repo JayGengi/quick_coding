@@ -6,10 +6,12 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <ProgressBar
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        />
+    <com.guoxun.airbaba.widget.ProgressView
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:background="@drawable/drawable_anim" />
 
     <TextView
         android:layout_width="wrap_content"

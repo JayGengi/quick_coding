@@ -116,8 +116,8 @@ class HomeIndexFragment : BaseFragment() {
             when(position){
                 //厂家直销
                 0 ->{
-                    startActivity(Intent(context, LoginActivity::class.java))
-//                    startActivity(Intent(context, HomeFactoryOutletActivity::class.java))
+//                    startActivity(Intent(context, LoginActivity::class.java))
+                    startActivity(Intent(context, HomeFactoryOutletActivity::class.java))
                 }
                 //新零售特供
                 1 ->{
