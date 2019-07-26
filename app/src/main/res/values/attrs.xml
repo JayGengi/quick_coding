@@ -87,4 +87,49 @@
         <!--星星满图-->
         <attr format="reference" name="starFill"/>
     </declare-styleable>
+
+    <!--<declare-styleable name="SignCalendarView">-->
+        <!--<attr name="weekHeight" />-->
+        <!--<attr name="weekTextSize" />-->
+        <!--<attr name="weekBackgroundColor" />-->
+        <!--<attr name="weekTextColor" />-->
+        <!--<attr name="calendarTextSize" />-->
+        <!--<attr name="calendarTextColor" />-->
+        <!--<attr name="isShowOtherMonth" format="boolean" />-->
+        <!--<attr name="isShowLunar" />-->
+        <!--<attr name="lunarTextColor" />-->
+        <!--<attr name="lunarTextSize" />-->
+        <!--<attr name="todayTextColor" />-->
+        <!--<attr name="signColor" format="color" />-->
+        <!--<attr name="signSize" format="dimension" />-->
+        <!--<attr name="signTextColor" />-->
+        <!--<attr name="errorColor" format="color" />-->
+        <!--<attr name="limitFutureMonth" />-->
+    <!--</declare-styleable>-->
+
+    <declare-styleable name="SignCalendarView">
+        <attr name="weekHeight" />
+        <attr name="weekTextSize" />
+        <attr name="weekBackgroundColor" />
+        <attr name="weekTextColor" />
+        <attr name="calendarTextSize" />
+        <attr name="calendarTextColor" />
+        <attr name="isShowOtherMonth" format="boolean" />
+        <attr name="otherMonthTextColor" format="color" />
+        <attr name="isShowLunar" />
+        <attr name="lunarTextColor" />
+        <attr name="lunarTextSize" />
+        <attr name="todayTextColor" />
+        <attr name="selectColor" format="color" />
+        <attr name="selectTextColor" format="color" />
+        <attr name="signIconSuccessId" format="integer" />
+        <attr name="signIconErrorId" format="integer" />
+        <attr name="signIconSize" format="dimension" />
+        <attr name="signColor" format="color" />
+        <attr name="signSize" format="dimension" />
+        <attr name="signTextColor" />
+        <attr name="errorTextColor" />
+        <attr name="errorColor" format="color" />
+        <attr name="limitFutureMonth" />
+    </declare-styleable>
 </resources>
