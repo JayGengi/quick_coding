@@ -363,6 +363,18 @@
             android:name=".ui.activity.LoginActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+
+        <!-- 绑定信息 -->
+        <activity
+            android:name=".ui.activity.mine.BingdingPhoneActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 一键登录 -->
+        <activity
+            android:name=".ui.activity.mine.AKeyLoginActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
