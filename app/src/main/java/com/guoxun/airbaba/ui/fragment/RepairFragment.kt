@@ -2,6 +2,7 @@ package com.guoxun.airbaba.ui.fragment
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
@@ -12,15 +13,18 @@ import com.guoxun.airbaba.Constants
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.showToast
+import com.guoxun.airbaba.ui.activity.mine.repair.MyRepairActivity
 import com.guoxun.airbaba.utils.picture.PictureSelectUtils
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.fragment_repair.*
 import java.util.*
 
 /**
- * Created by xuhao on 2017/11/9.
- * 我的
- */
+  * @des    首页报修
+  * @auther JayGengi
+  * 2019/7/26  11:48
+  * @email  jaygengiii@gmail.com
+  */
 class RepairFragment : BaseFragment() {
 
     private var mTitle: String? = null
@@ -38,6 +42,10 @@ class RepairFragment : BaseFragment() {
     @SuppressLint("ResourceAsColor")
     override fun initView() {
         loadSystemImg(null)
+        hos.setOnClickListener {
+            startActivity(Intent(context, MyRepairActivity::class.java))
+        }
+
     }
 
     override fun lazyLoad() {

@@ -6,9 +6,11 @@ import com.guoxun.airbaba.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_common.*
 
 /**
- * Created by xuhao on 2017/11/9.
- * 我的
- */
+  * @des    首页免费设计
+  * @auther JayGengi
+  * 2019/7/26  11:48
+  * @email  jaygengiii@gmail.com
+  */
 class FreeDesignFragment : BaseFragment() {
 
 

@@ -34,9 +34,10 @@ class MainActivity : BaseActivity() {
     private val mIconSelectIds = intArrayOf(R.mipmap.ic_home_selected, R.mipmap.ic_repair_selected, R.mipmap.ic_freedesign_selected, R.mipmap.ic_shoppingcart_selected, R.mipmap.ic_my_selected)
 
     private val mTabEntities = ArrayList<CustomTabEntity>()
-
+    private var isUser : Boolean = true
     private var mHomeFragment: HomeFragment? = null
      private var mRepairFragment: RepairFragment? = null
+     private var mRepairGuyFragment: RepairGuyFragment? = null
      private var mFreeDesignFragment: FreeDesignFragment? = null
      private var mShopCartFragment: ShopCartFragment? = null
 //    private var mHotFragment: GankTypeFragment? = null
@@ -98,11 +99,21 @@ class MainActivity : BaseActivity() {
                 transaction.add(R.id.fl_container, it, "home")
             }
             1  //报修管理
-            -> mRepairFragment?.let {
-                transaction.show(it)
-            } ?: RepairFragment.getInstance(mTitles[position]).let {
-                mRepairFragment = it
-                transaction.add(R.id.fl_container, it, "repair") }
+            ->
+                if(isUser){
+                    mRepairFragment?.let {
+                        transaction.show(it)
+                    } ?: RepairFragment.getInstance(mTitles[position]).let {
+                        mRepairFragment = it
+                        transaction.add(R.id.fl_container, it, "repair") }
+                }else{
+                    mRepairGuyFragment?.let {
+                        transaction.show(it)
+                    } ?: RepairGuyFragment.getInstance(mTitles[position]).let {
+                        mRepairGuyFragment = it
+                        transaction.add(R.id.fl_container, it, "repair") }
+                }
+
             2  //免费设计
             -> mFreeDesignFragment?.let {
                 transaction.show(it)
@@ -139,7 +150,13 @@ class MainActivity : BaseActivity() {
      */
     private fun hideFragments(transaction: FragmentTransaction) {
         mHomeFragment?.let { transaction.hide(it) }
-        mRepairFragment?.let { transaction.hide(it) }
+        if(isUser){
+            mRepairFragment?.let { transaction.hide(it) }
+        }else{
+            mRepairGuyFragment?.let { transaction.hide(it) }
+        }
+
+
         mFreeDesignFragment?.let { transaction.hide(it) }
         mShopCartFragment?.let { transaction.hide(it) }
         mMineFragment?.let { transaction.hide(it) }

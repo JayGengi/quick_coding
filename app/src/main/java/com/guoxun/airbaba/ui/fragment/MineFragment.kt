@@ -13,6 +13,7 @@ import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.setBackgroundAlpha
 import com.guoxun.airbaba.ui.activity.mine.*
 import com.guoxun.airbaba.ui.activity.mine.order.MyOrderActivity
+import com.guoxun.airbaba.ui.activity.mine.repair.MyRepairActivity
 import com.guoxun.airbaba.ui.activity.mine.setting.SettingActivity
 import kotlinx.android.synthetic.main.fragment_mine.*
 
@@ -50,6 +51,7 @@ class MineFragment : BaseFragment(), View.OnClickListener {
         order_f.setOnClickListener(this)
         mine_collection.setOnClickListener(this)
         mine_team.setOnClickListener(this)
+        mine_repair.setOnClickListener(this)
         mine_apply.setOnClickListener(this)
     }
 
@@ -111,6 +113,10 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             //我的团队
             R.id.mine_team ->{
                 startActivity(Intent(context, MyTeamActivity::class.java))
+            }
+            //报修管理
+            R.id.mine_repair ->{
+                startActivity(Intent(context, MyRepairActivity::class.java))
             }
             //申请入驻
             R.id.mine_apply ->{
