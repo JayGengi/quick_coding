@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.ui.activity.mine.order.MyOrderDetailsActivity
+import com.guoxun.airbaba.ui.activity.mine.repair.MyRepairDetailsActivity
 import com.guoxun.airbaba.ui.adapter.mine.MyRepairAdapter
 import kotlinx.android.synthetic.main.common_list.*
 import java.util.*
@@ -68,7 +69,7 @@ class MyRepairFragment : BaseFragment(){
 
         mAdapter!!.setOnItemClickListener { adapter, view, position ->
             //            val item : FollowListEntity.ListsBean = adapter.getItem(position) as FollowListEntity.ListsBean
-                startActivity(Intent(context, MyOrderDetailsActivity::class.java))
+                startActivity(Intent(context, MyRepairDetailsActivity::class.java))
         }
         /**
          * OnItemClickListener

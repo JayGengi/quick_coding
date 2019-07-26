@@ -34,7 +34,7 @@ class MainActivity : BaseActivity() {
     private val mIconSelectIds = intArrayOf(R.mipmap.ic_home_selected, R.mipmap.ic_repair_selected, R.mipmap.ic_freedesign_selected, R.mipmap.ic_shoppingcart_selected, R.mipmap.ic_my_selected)
 
     private val mTabEntities = ArrayList<CustomTabEntity>()
-    private var isUser : Boolean = true
+    private var isUser : Boolean = false
     private var mHomeFragment: HomeFragment? = null
      private var mRepairFragment: RepairFragment? = null
      private var mRepairGuyFragment: RepairGuyFragment? = null

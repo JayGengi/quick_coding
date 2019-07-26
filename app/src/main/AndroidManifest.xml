@@ -333,6 +333,17 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
+        <!-- 报修详情 -->
+        <activity
+            android:name=".ui.activity.mine.repair.MyRepairDetailsActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- 报修详情-维修工 -->
+        <activity
+            android:name=".ui.activity.mine.repair.MyRepairGuyDetailsActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
