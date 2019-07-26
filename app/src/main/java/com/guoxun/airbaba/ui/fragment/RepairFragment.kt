@@ -23,7 +23,6 @@ import java.util.*
  */
 class RepairFragment : BaseFragment() {
 
-    private var rightButton: Button? = null
     private var mTitle: String? = null
     companion object {
         fun getInstance(title: String): RepairFragment {
@@ -38,13 +37,6 @@ class RepairFragment : BaseFragment() {
 
     @SuppressLint("ResourceAsColor")
     override fun initView() {
-        topbar.setTitle("报修")
-        topbar.addLeftImageButton(R.mipmap.ic_message_nor,R.id.left).setOnClickListener { showToast("消息") }
-        rightButton = topbar.addRightTextButton("历史",R.id.right)
-        rightButton?.apply {
-            setTextColor(R.color.color_first_text)
-            setOnClickListener { showToast("历史")  }
-        }
         loadSystemImg(null)
     }
 

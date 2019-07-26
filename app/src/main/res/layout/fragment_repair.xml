@@ -3,14 +3,57 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/common_color_line"
+    android:background="@color/color_white"
     android:orientation="vertical"
     >
-    <com.qmuiteam.qmui.widget.QMUITopBar
+    <RelativeLayout
         android:id="@+id/topbar"
-        app:qmui_topbar_title_color="@color/color_first_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:background="@color/color_white"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp">
+
+        <RelativeLayout
+            android:id="@+id/message_lay"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp">
+
+            <ImageView
+                android:id="@+id/message"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:background="@mipmap/ic_message_nor"
+                android:scaleType="centerCrop" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="报修"
+            android:textColor="@color/color_first_text"
+            android:textSize="16sp"
+
+            />
+        <TextView
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_toStartOf="@+id/share"
+            android:gravity="center"
+            android:text="历史"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:textColor="@color/color_first_text"
+            android:textSize="14sp"
+
+            />
+
+
+    </RelativeLayout>
 
     <ScrollView
         android:layout_below="@+id/topbar"
@@ -48,7 +91,11 @@
                         style="@style/repair_value"
                         android:hint="输入联系人" />
                 </LinearLayout>
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/common_color_line"
+                    />
                 <LinearLayout style="@style/repair_layout"
                     android:layout_marginTop="1dp">
 
@@ -61,7 +108,11 @@
                         style="@style/repair_value"
                         android:hint="输入手机号" />
                 </LinearLayout>
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/common_color_line"
+                    />
                 <LinearLayout style="@style/repair_layout"
                     android:layout_marginTop="1dp">
 
@@ -74,7 +125,11 @@
                         style="@style/repair_value"
                         android:hint="输入所在地区" />
                 </LinearLayout>
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/common_color_line"
+                    />
                 <LinearLayout style="@style/repair_layout"
                     android:layout_marginTop="1dp">
 
@@ -87,7 +142,11 @@
                         style="@style/repair_value"
                         android:hint="输入所在地址" />
                 </LinearLayout>
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/common_color_line"
+                    />
                 <LinearLayout style="@style/repair_layout"
                     android:layout_marginTop="1dp">
 
@@ -100,7 +159,11 @@
                         style="@style/repair_value"
                         android:hint="输入报修电器" />
                 </LinearLayout>
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/common_color_line"
+                    />
                 <LinearLayout style="@style/repair_layout"
                     android:layout_marginTop="1dp">
 
@@ -113,7 +176,11 @@
                         style="@style/repair_value"
                         android:hint="输入您的内容" />
                 </LinearLayout>
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/common_color_line"
+                    />
                 <LinearLayout style="@style/repair_layout"
                     android:layout_marginTop="1dp">
 
