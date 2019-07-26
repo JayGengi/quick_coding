@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/common_textview_border_white">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="15dp"
+            >
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="JayGengi"
+                android:textColor="@color/color_first_text"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_toEndOf="@+id/name"
+                android:layout_marginStart="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="150****8585"
+                android:textColor="@color/color_first_text"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/address_edit"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:padding="5dp"
+                android:layout_alignParentEnd="true"
+                android:src="@mipmap/ic_address_editor"
+                />
+            <TextView
+                android:id="@+id/default_icon"
+                android:layout_below="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="默认"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/common_textview_border_blue"
+                android:textColor="@color/color_white"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/des"
+                android:layout_below="@+id/name"
+                android:layout_toEndOf="@+id/default_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="北京朝阳区日坛国际贸易中心A座1222北京朝阳区日坛国际贸易中心A座1222"
+                android:textColor="@color/color_assist_text"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</RelativeLayout>

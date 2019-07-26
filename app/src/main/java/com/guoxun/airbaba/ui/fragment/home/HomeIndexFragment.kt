@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.mvp.model.bean.MenuEntity
+import com.guoxun.airbaba.ui.activity.LoginActivity
 import com.guoxun.airbaba.ui.activity.home.*
 import com.guoxun.airbaba.ui.activity.home.goods.GoodsDetailsActivity
 import com.guoxun.airbaba.ui.activity.home.goods.GoodsTypeActivity
@@ -115,7 +116,8 @@ class HomeIndexFragment : BaseFragment() {
             when(position){
                 //厂家直销
                 0 ->{
-                    startActivity(Intent(context, HomeFactoryOutletActivity::class.java))
+                    startActivity(Intent(context, LoginActivity::class.java))
+//                    startActivity(Intent(context, HomeFactoryOutletActivity::class.java))
                 }
                 //新零售特供
                 1 ->{

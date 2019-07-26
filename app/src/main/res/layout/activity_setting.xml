@@ -128,7 +128,14 @@
                         android:text="推送通知开关"
                         android:textColor="@color/color_first_text"
                         android:textSize="15sp" />
-
+                    <ImageView
+                        android:id="@+id/iv_push_switch"
+                        android:layout_width="53dp"
+                        android:layout_height="25dp"
+                        android:src="@mipmap/btn_selected_nor"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        />
 
                 </RelativeLayout>
 
@@ -160,7 +167,14 @@
                         android:textColor="@color/color_first_text"
                         android:textSize="15sp" />
 
-
+                    <ImageView
+                        android:id="@+id/iv_wifi_switch"
+                        android:layout_width="53dp"
+                        android:layout_height="25dp"
+                        android:src="@mipmap/btn_unselected_nor"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        />
                 </RelativeLayout>
 
                 <!--关于我们-->

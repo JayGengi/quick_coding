@@ -77,18 +77,6 @@ class MyRepairGuyDetailsActivity : BaseActivity(),View.OnClickListener{
                 }
                 .addAction("返回") { dialog, index -> dialog.dismiss() }
                 .create(R.style.QMUI_Dialog).show()
-//        QMUIDialog.MessageDialogBuilder(this)
-//                .setTitle("提示")
-//                .setMessage("400-820-5200")
-//                .addAction("返回") { dialog, _ -> dialog.dismiss() }
-//                .addAction(0, "拨打", QMUIDialogAction.ACTION_PROP_NEGATIVE) { dialog, index ->
-//                    dialog.dismiss()
-//                    intent = Intent(Intent.ACTION_DIAL)
-//                    val data = Uri.parse("tel:${400-820-5200}")
-//                    intent.data = data
-//                    startActivity(intent)
-//                }
-//                .create(R.style.QMUI_Dialog).show()
     }
     /**
      * 带输入框的dialog

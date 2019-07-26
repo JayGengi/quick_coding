@@ -12,6 +12,7 @@ import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.setBackgroundAlpha
 import com.guoxun.airbaba.ui.activity.mine.*
+import com.guoxun.airbaba.ui.activity.mine.address.AddressListActivity
 import com.guoxun.airbaba.ui.activity.mine.order.MyOrderActivity
 import com.guoxun.airbaba.ui.activity.mine.repair.MyRepairActivity
 import com.guoxun.airbaba.ui.activity.mine.setting.SettingActivity
@@ -50,6 +51,7 @@ class MineFragment : BaseFragment(), View.OnClickListener {
         order_th.setOnClickListener(this)
         order_f.setOnClickListener(this)
         mine_collection.setOnClickListener(this)
+        mine_address.setOnClickListener(this)
         mine_team.setOnClickListener(this)
         mine_repair.setOnClickListener(this)
         mine_apply.setOnClickListener(this)
@@ -109,6 +111,10 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             //收藏
             R.id.mine_collection ->{
                 startActivity(Intent(context, MyCollectionActivity::class.java))
+            }
+            //地址管理
+            R.id.mine_address ->{
+                startActivity(Intent(context, AddressListActivity::class.java))
             }
             //我的团队
             R.id.mine_team ->{
