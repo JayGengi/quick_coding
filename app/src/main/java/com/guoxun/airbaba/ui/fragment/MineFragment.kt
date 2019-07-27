@@ -7,10 +7,15 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ImageView
+import android.widget.PopupWindow
+import android.widget.RelativeLayout
+import android.widget.TextView
 import com.guoxun.airbaba.R
+import com.guoxun.airbaba.aspectj.annotation.NeedLogin
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.setBackgroundAlpha
+import com.guoxun.airbaba.ui.activity.LoginActivity
 import com.guoxun.airbaba.ui.activity.mine.*
 import com.guoxun.airbaba.ui.activity.mine.address.AddressListActivity
 import com.guoxun.airbaba.ui.activity.mine.order.MyOrderActivity
@@ -35,7 +40,14 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             fragment.mTitle = title
             return fragment
         }
+
+//        @NeedLogin(tipType = NeedLogin.SHOW_DIALOG,loginActivity = LoginActivity::class )
+//        fun startDialog(context: Context) {
+//            val intent = Intent(context, MainActivity::class.java)
+//            context.startActivity(intent)
+//        }
     }
+
     override fun getLayoutId(): Int= R.layout.fragment_mine
 
     override fun initView() {

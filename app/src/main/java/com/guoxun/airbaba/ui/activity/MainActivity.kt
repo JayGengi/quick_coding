@@ -9,6 +9,7 @@ import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
 import com.guoxun.airbaba.mvp.model.bean.TabEntity
 import com.guoxun.airbaba.R
+import com.guoxun.airbaba.aspectj.annotation.NeedLogin
 import com.guoxun.airbaba.base.BaseActivity
 import com.guoxun.airbaba.showToast
 import com.guoxun.airbaba.ui.fragment.*
@@ -128,8 +129,12 @@ class MainActivity : BaseActivity() {
                 transaction.add(R.id.fl_container, it, "shopCart") }
             4 //我的
             -> mMineFragment?.let {
+
                 transaction.show(it)
-            } ?: MineFragment.getInstance(mTitles[position]).let {
+            } ?:
+
+            MineFragment.getInstance(mTitles[position]).let {
+
                 mMineFragment = it
                 transaction.add(R.id.fl_container, it, "mine") }
 

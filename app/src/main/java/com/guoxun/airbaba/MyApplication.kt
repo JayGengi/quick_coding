@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Bundle
 import android.support.multidex.MultiDexApplication
 import android.util.Log
+import com.guoxun.airbaba.aspectj.AopUtil
 import com.guoxun.airbaba.utils.DisplayManager
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
@@ -41,6 +42,7 @@ class MyApplication : MultiDexApplication(){
         context = applicationContext
 //        refWatcher = setupLeakCanary()
         initConfig()
+        AopUtil.init(this)
         DisplayManager.init(this)
         registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks)
 
