@@ -4,6 +4,13 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseActivity
+import com.guoxun.airbaba.mvp.contract.NewRetailContract
+import com.guoxun.airbaba.mvp.contract.ShopListContract
+import com.guoxun.airbaba.mvp.model.bean.NewRetailEntity
+import com.guoxun.airbaba.mvp.model.bean.ShopListEntity
+import com.guoxun.airbaba.mvp.presenter.NewRetailPresenter
+import com.guoxun.airbaba.mvp.presenter.ShopListPresenter
+import com.guoxun.airbaba.net.exception.ErrorStatus
 import com.guoxun.airbaba.ui.adapter.home.HomeMenuMainAdapter
 import kotlinx.android.synthetic.main.common_list.*
 import java.util.*
@@ -14,26 +21,26 @@ import java.util.*
  * 2019/7/19 0019 上午 10:01
  * @email jaygengiii@gmail.com
  */
-class HomeMenuMainActivity : BaseActivity(){
+class HomeMenuMainActivity : BaseActivity(), NewRetailContract.View {
 
-    private var baseList = ArrayList<String>()
+    private var baseList = ArrayList<NewRetailEntity.ResultsBean>()
     private val mAdapter by lazy { HomeMenuMainAdapter(baseList) }
-//    private val mPresenter by lazy { FansListPresenter() }
-//
-//    init {
-//        mPresenter.attachView(this)
-//    }
+    private val mPresenter by lazy { NewRetailPresenter() }
+
+    init {
+        mPresenter.attachView(this)
+    }
 
     override fun layoutId(): Int {
         return R.layout.common_list
     }
 
     override fun initView() {
+        mLayoutStatusView = multipleStatusView
         val bundle = intent.extras
         val title = bundle.getString("title")
         mTopBar.setTitle(title)
         mTopBar.addLeftBackImageButton().setOnClickListener { finish() }
-        mLayoutStatusView = multipleStatusView
 
         refreshLayout.setOnRefreshListener {
             CURRENT_PAGE = 1
@@ -51,12 +58,6 @@ class HomeMenuMainActivity : BaseActivity(){
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             adapter = mAdapter
         }
-        baseList.clear()
-        baseList.add("1")
-        baseList.add("1")
-        baseList.add("1")
-        mAdapter.setNewData(baseList)
-
         /**
          * OnItemClickListener
          * */
@@ -77,56 +78,55 @@ class HomeMenuMainActivity : BaseActivity(){
     }
 
     override fun initData() {
-//        val map = HashMap<String, Any>()
-//        map["user_id"] = LitePal.findFirst(User::class.java).user_id
-//        map["p"] = CURRENT_PAGE
-//        mPresenter.requestFansListInfo(map)
+        mPresenter.requestNewRetailInfo(CURRENT_PAGE)
     }
-//    override fun showFansListInfo(dataInfo: FansListEntity) {
-//        multipleStatusView?.showContent()
-//        mAdapter.run {
-//            if ((dataInfo.lists!=null && dataInfo.lists!!.isNotEmpty()) || CURRENT_PAGE>1) {
-//                if (CURRENT_PAGE == 1) {
-//                    baseList.clear()
-//                }
-//                refreshLayout.isEnableLoadMore = dataInfo.lists!!.size == PAGE_CAPACITY
-//                baseList.addAll(dataInfo.lists!!)
-//                setNewData(baseList)
-//            } else {
-//                multipleStatusView?.showEmpty()
-//            }
-//        }
-//    }
-//    override fun showError(msg: String, errorCode: Int) {
-//        mLayoutStatusView?.dismiss()
-//        if (errorCode == ErrorStatus.NETWORK_ERROR) {
-//            multipleStatusView?.showNoNetwork()
-//        } else {
-//            showToast(msg)
-//        }
-//    }
-//    /**
-//     * 显示 Loading
-//     */
-//    override fun showLoading() {
-//        mLayoutStatusView?.showLoading()
-//    }
-//
-//    /**
-//     * 隐藏 Loading
-//     */
-//    override fun dismissLoading() {
-//        mLayoutStatusView?.dismiss()
-//        if(refreshLayout!=null && refreshLayout.isRefreshing){
-//            refreshLayout.finishRefresh()
-//        }
-//        if(refreshLayout!=null && refreshLayout.isLoading){
-//            refreshLayout.finishLoadMore()
-//        }
-//    }
-//
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        mPresenter.detachView()
-//    }
+
+    override fun showNewRetailInfo(dataInfo: List<NewRetailEntity.ResultsBean>) {
+        multipleStatusView?.showContent()
+        mAdapter.run {
+            if ((dataInfo.isNotEmpty()) || CURRENT_PAGE > 1) {
+                if (CURRENT_PAGE == 1) {
+                    baseList.clear()
+                }
+                refreshLayout.isEnableLoadMore = dataInfo.size == PAGE_CAPACITY
+                baseList.addAll(dataInfo)
+                setNewData(baseList)
+            } else {
+                multipleStatusView?.showEmpty()
+            }
+        }
+    }
+
+    override fun showError(msg: String, errorCode: Int) {
+        when (errorCode) {
+            ErrorStatus.NETWORK_ERROR -> multipleStatusView?.showNoNetwork()
+            ErrorStatus.UNKNOWN_ERROR -> multipleStatusView?.showEmpty()
+            else -> multipleStatusView?.showError()
+        }
+    }
+
+    /**
+     * 显示 Loading
+     */
+    override fun showLoading() {
+        mLayoutStatusView?.showLoading()
+    }
+
+    /**
+     * 隐藏 Loading
+     */
+    override fun dismissLoading() {
+        if (refreshLayout != null && refreshLayout.isRefreshing) {
+            refreshLayout.finishRefresh()
+        }
+        if (refreshLayout != null && refreshLayout.isLoading) {
+            refreshLayout.finishLoadMore()
+        }
+        mLayoutStatusView?.dismissLoading()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mPresenter.detachView()
+    }
 }

@@ -15,7 +15,7 @@ object ErrorStatus {
      * 未知错误
      */
     @JvmField
-    val UNKNOWN_ERROR = 1002
+    val UNKNOWN_ERROR = 204
 
     /**
      * 服务器内部错误

@@ -5,6 +5,7 @@ import com.guoxun.airbaba.mvp.model.bean.AdListEntity;
 import com.guoxun.airbaba.mvp.model.bean.CategoryEntity;
 import com.guoxun.airbaba.mvp.model.bean.CategoryTEntity;
 import com.guoxun.airbaba.mvp.model.bean.GoodsListEntity;
+import com.guoxun.airbaba.mvp.model.bean.NewRetailEntity;
 import com.guoxun.airbaba.mvp.model.bean.SelectGoodsEntity;
 import com.guoxun.airbaba.mvp.model.bean.ShopListEntity;
 import com.guoxun.airbaba.net.BaseResponse;
@@ -74,4 +75,9 @@ public interface ApiService {
     @GET("Goods/categoryInfo")
     Observable<BaseResponse<CategoryTEntity>> getCategoryTInfo(@Query("pid") int pid);
 
+    /**
+     * 首页-新零售特供商品列表
+     */
+    @GET("Index/newRetailList")
+    Observable<NewRetailEntity> getNewRetailInfo(@Query("page") int page);
 }

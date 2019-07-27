@@ -7,8 +7,11 @@ import android.support.v7.widget.LinearLayoutManager
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.mvp.contract.CategoryTContract
+import com.guoxun.airbaba.mvp.contract.GoodsListContract
 import com.guoxun.airbaba.mvp.model.bean.CategoryTEntity
+import com.guoxun.airbaba.mvp.model.bean.GoodsListEntity
 import com.guoxun.airbaba.mvp.presenter.CategoryTPresenter
+import com.guoxun.airbaba.mvp.presenter.GoodsListPresenter
 import com.guoxun.airbaba.ui.adapter.home.HomeTypeMenuAdapter
 import com.guoxun.airbaba.ui.adapter.home.HomeTypeShopAdapter
 import com.guoxun.airbaba.utils.BannerImageLoader
@@ -26,19 +29,20 @@ import java.util.*
    * @email jaygengiii@gmail.com
    */
 
-class HomeTypeFragment : BaseFragment(),CategoryTContract.View {
+class HomeTypeFragment : BaseFragment(),CategoryTContract.View , GoodsListContract.View{
 
     private var pid : Int? = 0
     private var menuList = ArrayList<CategoryTEntity.CatesBean>()
     private val mAdapter by lazy { activity?.let { HomeTypeMenuAdapter( menuList) } }
 
-    private var shopList = ArrayList<CategoryTEntity.CatesBean>()
+    private var shopList = ArrayList<GoodsListEntity.ResultsBean>()
     private val shopAdapter by lazy { activity?.let { HomeTypeShopAdapter( shopList) } }
 
     private val mPresenter by lazy { CategoryTPresenter() }
-
+    private val mGoodsListPresenter by lazy { GoodsListPresenter() }
     init {
         mPresenter.attachView(this)
+        mGoodsListPresenter.attachView(this)
     }
     override fun getLayoutId(): Int = R.layout.fragment_home_type
 
@@ -58,6 +62,8 @@ class HomeTypeFragment : BaseFragment(),CategoryTContract.View {
     }
     private fun loadData(){
         mPresenter.requestCategoryTInfo(pid!!)
+
+        mGoodsListPresenter.requestGoodsListInfo("","",pid.toString(),"",CURRENT_PAGE)
     }
     override fun initView() {
 
@@ -108,12 +114,15 @@ class HomeTypeFragment : BaseFragment(),CategoryTContract.View {
     override fun showCategoryTInfo(dataInfo: CategoryTEntity) {
         initBanner(dataInfo.ad!!)
         mAdapter!!.setNewData(dataInfo.cates)
+    }
+
+    override fun showGoodsListInfo(dataInfo: List<GoodsListEntity.ResultsBean>) {
         shopAdapter?.run {
-            if ((dataInfo.cates!!.isNotEmpty()) || CURRENT_PAGE>1) {
+            if ((dataInfo.isNotEmpty()) || CURRENT_PAGE>1) {
                 if (CURRENT_PAGE == 1) {
                     shopList.clear()
                 }
-                shopList.addAll(dataInfo.cates!!)
+                shopList.addAll(dataInfo)
                 setNewData(shopList)
             }
         }

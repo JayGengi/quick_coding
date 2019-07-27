@@ -98,7 +98,7 @@ class HomeFactoryOutletActivity : BaseActivity(),ShopListContract.View{
         if (errorCode == ErrorStatus.NETWORK_ERROR) {
             multipleStatusView?.showNoNetwork()
         } else {
-            showToast(msg)
+            multipleStatusView?.showError()
         }
     }
     /**
