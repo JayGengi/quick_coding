@@ -3,6 +3,7 @@ package com.guoxun.airbaba.api;
 import com.guoxun.airbaba.db.User;
 import com.guoxun.airbaba.mvp.model.bean.AdListEntity;
 import com.guoxun.airbaba.mvp.model.bean.CategoryEntity;
+import com.guoxun.airbaba.mvp.model.bean.CategoryTEntity;
 import com.guoxun.airbaba.mvp.model.bean.GoodsListEntity;
 import com.guoxun.airbaba.mvp.model.bean.SelectGoodsEntity;
 import com.guoxun.airbaba.mvp.model.bean.ShopListEntity;
@@ -65,4 +66,12 @@ public interface ApiService {
     Observable<GoodsListEntity> getGoodsListInfo(@Query("keyword") String keyword, @Query("shop_id") String shop_id,
                                                  @Query("goods_cate") String goods_cate,
                                                  @Query("sort") String sort, @Query("page") int page);
+
+
+    /**
+     *  商品分类：一级分类下二三级分类以及广告
+     */
+    @GET("Goods/categoryInfo")
+    Observable<BaseResponse<CategoryTEntity>> getCategoryTInfo(@Query("pid") int pid);
+
 }
