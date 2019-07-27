@@ -1,0 +1,32 @@
+ #if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME} #end
+
+import com.mingdian.vcang.base.IBaseView
+import com.mingdian.vcang.base.IPresenter
+import com.mingdian.vcang.mvp.model.bean.${NAME}Entity
+
+
+interface ${NAME}Contract {
+
+    interface View : IBaseView {
+
+        /**
+         * ***数据
+         */
+        fun show${NAME}Info(dataInfo: ${NAME}Entity)
+        /**
+         * 显示错误信息
+         */
+        fun showError(msg: String,errorCode:Int)
+
+    }
+
+    interface Presenter : IPresenter<View> {
+
+        /**
+         * ****
+         */
+        fun request${NAME}Info(map:Map<String,Any>)
+    }
+
+
+}

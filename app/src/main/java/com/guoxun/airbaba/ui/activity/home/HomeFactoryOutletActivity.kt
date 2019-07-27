@@ -118,6 +118,7 @@ class HomeFactoryOutletActivity : BaseActivity(),ShopListContract.View{
         if(refreshLayout!=null && refreshLayout.isLoading){
             refreshLayout.finishLoadMore()
         }
+        mLayoutStatusView?.dismissLoading()
     }
 
     override fun onDestroy() {

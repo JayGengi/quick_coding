@@ -131,10 +131,7 @@ class MainActivity : BaseActivity() {
             -> mMineFragment?.let {
 
                 transaction.show(it)
-            } ?:
-
-            MineFragment.getInstance(mTitles[position]).let {
-
+            } ?:MineFragment.getInstance(mTitles[position]).let {
                 mMineFragment = it
                 transaction.add(R.id.fl_container, it, "mine") }
 
@@ -160,8 +157,6 @@ class MainActivity : BaseActivity() {
         }else{
             mRepairGuyFragment?.let { transaction.hide(it) }
         }
-
-
         mFreeDesignFragment?.let { transaction.hide(it) }
         mShopCartFragment?.let { transaction.hide(it) }
         mMineFragment?.let { transaction.hide(it) }

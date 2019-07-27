@@ -1,0 +1,20 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME} #end
+
+import com.mingdian.vcang.mvp.model.bean.${NAME}Entity
+import com.mingdian.vcang.net.BaseResponse
+import com.mingdian.vcang.net.RetrofitManager
+import com.mingdian.vcang.scheduler.SchedulerUtils
+import com.mingdian.vcang.utils.entryption.DecodeUtil
+import io.reactivex.Observable
+
+
+class ${NAME}Model {
+
+    /**
+     * ****
+     */
+    fun get${NAME}Info(map:Map<String,Any>): Observable<BaseResponse<${NAME}Entity>> {
+        return RetrofitManager.service.get${NAME}Info(DecodeUtil.decodeParams(map))
+                .compose(SchedulerUtils.ioToMain())
+    }
+}

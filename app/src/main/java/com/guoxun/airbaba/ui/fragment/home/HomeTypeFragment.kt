@@ -28,7 +28,7 @@ import java.util.ArrayList
 
 class HomeTypeFragment : BaseFragment() {
 
-
+    private var key : Int? = 0
     private var menuList = ArrayList<MenuEntity>()
     private var menu = MenuEntity()
     private val mAdapter by lazy { activity?.let { HomeMenuAdapter( menuList) } }
@@ -39,11 +39,12 @@ class HomeTypeFragment : BaseFragment() {
     override fun getLayoutId(): Int = R.layout.fragment_home_type
 
     companion object {
-        fun newInstance(key: String): HomeTypeFragment {
+        fun newInstance(key: Int): HomeTypeFragment {
             val args = Bundle()
-            args.putString("key", key)
+            args.putInt("key", key)
             val fragment = HomeTypeFragment()
-            fragment.arguments = args
+//            fragment.arguments = args
+            fragment.key = key
             return fragment
         }
     }

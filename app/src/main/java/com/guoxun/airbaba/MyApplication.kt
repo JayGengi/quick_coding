@@ -17,6 +17,7 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
+import org.litepal.LitePal
 import kotlin.properties.Delegates
 
 
@@ -41,6 +42,8 @@ class MyApplication : MultiDexApplication(){
         super.onCreate()
         context = applicationContext
 //        refWatcher = setupLeakCanary()
+        // 初始化LitePal数据库
+        LitePal.initialize(this)
         initConfig()
         AopUtil.init(this)
         DisplayManager.init(this)

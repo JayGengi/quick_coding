@@ -5,8 +5,11 @@ import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
+import com.guoxun.airbaba.mvp.contract.AdListContract
+import com.guoxun.airbaba.mvp.model.bean.AdListEntity
 import com.guoxun.airbaba.mvp.model.bean.MenuEntity
-import com.guoxun.airbaba.ui.activity.LoginActivity
+import com.guoxun.airbaba.mvp.presenter.AdListPresenter
+import com.guoxun.airbaba.showToast
 import com.guoxun.airbaba.ui.activity.home.*
 import com.guoxun.airbaba.ui.activity.home.goods.GoodsDetailsActivity
 import com.guoxun.airbaba.ui.activity.home.goods.GoodsTypeActivity
@@ -23,13 +26,13 @@ import java.util.*
 
 
 /**
-   * @description: 福利
-   * @author JayGengi
-   * @date  2018/11/15 0015 下午 4:59
-   * @email jaygengiii@gmail.com
-   */
+  * @des    首页 AdList
+  * @auther JayGengi
+  * @data   2019/7/27  14:35
+  * @email  jaygengiii@gmail.com
+  */
 
-class HomeIndexFragment : BaseFragment() {
+class HomeIndexFragment : BaseFragment() , AdListContract.View{
 
 
     private var menuList = ArrayList<MenuEntity>()
@@ -42,7 +45,22 @@ class HomeIndexFragment : BaseFragment() {
     private var shopList = ArrayList<String>()
     private val shopAdapter by lazy { activity?.let { HomeShopAdapter( shopList) } }
 
+
+    private val mPresenter by lazy { AdListPresenter() }
+    init {
+        mPresenter.attachView(this)
+    }
     override fun getLayoutId(): Int = R.layout.fragment_home_index
+
+
+    override fun lazyLoad() {
+        loadData()
+    }
+    private fun loadData(){
+        //类型 1根据广告位置 2根据商品分类
+        // types ==1时广告位置id，首页轮播，请传入1。types==2时传递商品一级分类
+        mPresenter.requestAdListInfo("1","1")
+    }
 
     override fun initView() {
 
@@ -202,18 +220,17 @@ class HomeIndexFragment : BaseFragment() {
         shopAdapter!!.setOnItemClickListener { adapter, view, position ->
             startActivity(Intent(context, GoodsDetailsActivity::class.java))
         }
-        val baseList = ArrayList<String>()
-        baseList.add("https://www.airbaba.cn/data/gallery_album/229/original_img/1556475130887604624.jpg")
-        baseList.add("https://www.airbaba.cn/data/gallery_album/229/original_img/1556475159455662649.jpg")
-        initBanner(baseList)
-
         val base2List = ArrayList<String>()
         base2List.add("https://www.airbaba.cn/data/gallery_album/229/original_img/1556475130887604624.jpg")
         base2List.add("https://www.airbaba.cn/data/gallery_album/229/original_img/1556475159455662649.jpg")
         initTwoBanner(base2List)
     }
 
-    private fun initBanner(bannerList: List<String>) {
+    private fun initBanner(dataInfo: List<AdListEntity.ResultsBean>) {
+        val bannerList = ArrayList<String>()
+        for(item : AdListEntity.ResultsBean in dataInfo.iterator()){
+            item.picture?.let { bannerList.add(it) }
+        }
         banner.setOnBannerListener { position1 ->
             context?.let { ImagePreviewUtils.largerView(it, position1, bannerList) }
         }
@@ -254,11 +271,30 @@ class HomeIndexFragment : BaseFragment() {
         banner_two.start()
 
     }
-    override fun lazyLoad() {
-        loadData()
-    }
-    private fun loadData(){
 
+    override fun showAdListInfo(dataInfo: List<AdListEntity.ResultsBean>) {
+        initBanner(dataInfo)
+    }
+
+    override fun showError(msg: String, errorCode: Int) {
+        showToast(msg)
+    }
+    /**
+     * 显示 Loading
+     */
+    override fun showLoading() {
+        mLayoutStatusView?.showLoading()
+    }
+    /**
+     * 隐藏 Loading
+     */
+    override fun dismissLoading() {
+        mLayoutStatusView?.dismissLoading()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mPresenter.detachView()
     }
 }
 

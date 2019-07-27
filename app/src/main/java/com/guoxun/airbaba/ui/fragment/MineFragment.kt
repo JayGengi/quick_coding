@@ -12,10 +12,8 @@ import android.widget.PopupWindow
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.guoxun.airbaba.R
-import com.guoxun.airbaba.aspectj.annotation.NeedLogin
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.setBackgroundAlpha
-import com.guoxun.airbaba.ui.activity.LoginActivity
 import com.guoxun.airbaba.ui.activity.mine.*
 import com.guoxun.airbaba.ui.activity.mine.address.AddressListActivity
 import com.guoxun.airbaba.ui.activity.mine.order.MyOrderActivity

@@ -3,10 +3,12 @@ package com.guoxun.airbaba.net
 import com.guoxun.airbaba.MyApplication
 import com.guoxun.airbaba.api.ApiService
 import com.guoxun.airbaba.api.UrlConstant
+import com.guoxun.airbaba.db.User
 import com.guoxun.airbaba.utils.NetworkUtil
 import com.guoxun.airbaba.utils.Preference
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
+import org.litepal.LitePal
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -34,7 +36,8 @@ object RetrofitManager{
         getRetrofit().create(ApiService::class.java)
     }
 
-    private var token:String by Preference("token","")
+    private var token: String? = ""
+            //LitePal.findFirst(User::class.java)!!.token
 
     /**
      * 设置公共参数

@@ -43,7 +43,7 @@ TODO [lazy,loading,placeholder]
 3.普通列表请求后的逻辑判断[暂无封装(包含刷新、加载更多、空数据页面、异常页面)] ps:multiple-status-view
 
 4.添加blankj 常用Utils库[比如：ToastUtils] github：<a href="#">https://github.com/Blankj/AndroidUtilCode</a>
-        工具类介绍用法大全：https://blog.csdn.net/abcwang1234/article/details/53421290
+        工具类介绍用法大全：https://github.com/Blankj/AndroidUtilCode/blob/master/lib/utilcode/README-CN.md
 
 5.添加仿IOS侧滑关闭 TODO
 

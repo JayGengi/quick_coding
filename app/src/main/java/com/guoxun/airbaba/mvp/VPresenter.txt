@@ -1,0 +1,37 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME} #end
+import com.mingdian.vcang.base.BasePresenter
+import com.mingdian.vcang.mvp.contract.${NAME}Contract
+import com.mingdian.vcang.mvp.model.${NAME}Model
+import com.mingdian.vcang.net.exception.ErrorStatus
+import com.mingdian.vcang.net.exception.ExceptionHandle
+
+class ${NAME}Presenter : BasePresenter<${NAME}Contract.View>(), ${NAME}Contract.Presenter {
+    private val m${NAME}Model: ${NAME}Model by lazy {
+
+        ${NAME}Model()
+     }
+    override fun request${NAME}Info(map: Map<String, Any>) {
+        checkViewAttached()
+        mRootView?.showLoading()
+        val disposable = m${NAME}Model.get${NAME}Info(map)
+                .subscribe({ responseInfo ->
+                    mRootView?.apply {
+                        dismissLoading()
+                        if(responseInfo.status == ErrorStatus.SUCCESS){
+                            show${NAME}Info(responseInfo.data)
+                        }else{
+                            showError(responseInfo.msg,ExceptionHandle.errorCode)
+                        }
+                    }
+                }, { t ->
+                    mRootView?.apply {
+                        //¥¶¿Ì“Ï≥£
+                        dismissLoading()
+                        showError(ExceptionHandle.handleException(t),ExceptionHandle.errorCode)
+                    }
+
+                })
+
+        addSubscription(disposable)
+    }
+}

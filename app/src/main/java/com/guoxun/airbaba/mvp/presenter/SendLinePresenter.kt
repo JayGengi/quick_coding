@@ -1,43 +1,42 @@
 package com.guoxun.airbaba.mvp.presenter
 
 import com.guoxun.airbaba.base.BasePresenter
-import com.guoxun.airbaba.mvp.contract.ShopListContract
-import com.guoxun.airbaba.mvp.model.ShopListModel
-import com.guoxun.airbaba.mvp.model.bean.ShopListEntity
+import com.guoxun.airbaba.mvp.contract.SendLineContract
+import com.guoxun.airbaba.mvp.model.SendLineModel
 import com.guoxun.airbaba.net.exception.ErrorStatus
 import com.guoxun.airbaba.net.exception.ExceptionHandle
 
 
 /**
- * Created by xuhao on 2017/11/8.
- * 首页精选的 Presenter
- * (数据是 Banner 数据和一页数据组合而成的 HomeBean,查看接口然后在分析就明白了)
- */
+  * @des    发送验证码
+  * @auther JayGengi
+  * @data   2019/7/27  10:38
+  * @email  jaygengiii@gmail.com
+  */
 
-class ShopListPresenter : BasePresenter<ShopListContract.View>(), ShopListContract.Presenter {
+class SendLinePresenter : BasePresenter<SendLineContract.View>(), SendLineContract.Presenter {
 
 
-    private val girlsModel: ShopListModel by lazy {
-        ShopListModel()
+    private val mSendLineModel: SendLineModel by lazy {
+        SendLineModel()
     }
 
-    override fun requestShopListInfo(page: Int) {
+    override fun requestSendLineInfo(map: Map<String, Any>) {
         checkViewAttached()
         mRootView?.showLoading()
-        val disposable = girlsModel.getShopListInfo(page)
+        val disposable = mSendLineModel.getSendLineInfo(map)
                 .subscribe({ responseInfo ->
                     mRootView?.apply {
                         dismissLoading()
                         if (responseInfo.flag == ErrorStatus.SUCCESS) {
-                            responseInfo.response?.let { showShopListInfo(it) }
+                            showSendLineInfo(responseInfo.msg)
                         }else{
-                            responseInfo.msg?.let { showError(it,ExceptionHandle.errorCode) }
+                            showError( responseInfo.msg,ExceptionHandle.errorCode)
                         }
                     }
                 }, { t ->
                     mRootView?.apply {
                         //处理异常
-                        dismissLoading()
                         showError(ExceptionHandle.handleException(t),ExceptionHandle.errorCode)
                     }
 
