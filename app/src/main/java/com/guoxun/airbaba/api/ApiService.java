@@ -3,8 +3,11 @@ package com.guoxun.airbaba.api;
 import com.guoxun.airbaba.db.User;
 import com.guoxun.airbaba.mvp.model.bean.AdListEntity;
 import com.guoxun.airbaba.mvp.model.bean.CategoryEntity;
+import com.guoxun.airbaba.mvp.model.bean.GoodsListEntity;
+import com.guoxun.airbaba.mvp.model.bean.SelectGoodsEntity;
 import com.guoxun.airbaba.mvp.model.bean.ShopListEntity;
 import com.guoxun.airbaba.net.BaseResponse;
+import com.guoxun.airbaba.ui.activity.mine.IntegralActivity;
 
 import java.util.Map;
 
@@ -48,4 +51,18 @@ public interface ApiService {
      */
     @GET("Index/adList")
     Observable<AdListEntity> getAdListInfo(@Query("types") String types,@Query("pid") String pid);
+
+    /**
+     *  首页商城优选商品（只有四个）
+     */
+    @GET("Goods/selectGoods")
+    Observable<SelectGoodsEntity> getSelectGoodsInfo();
+
+    /**
+     *  商品列表
+     */
+    @GET("Goods/goodsList")
+    Observable<GoodsListEntity> getGoodsListInfo(@Query("keyword") String keyword, @Query("shop_id") String shop_id,
+                                                 @Query("goods_cate") String goods_cate,
+                                                 @Query("sort") String sort, @Query("page") int page);
 }

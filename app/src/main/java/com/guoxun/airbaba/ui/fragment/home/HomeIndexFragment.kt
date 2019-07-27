@@ -6,10 +6,15 @@ import android.support.v7.widget.GridLayoutManager
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.mvp.contract.AdListContract
+import com.guoxun.airbaba.mvp.contract.GoodsListContract
+import com.guoxun.airbaba.mvp.contract.SelectGoodsContract
 import com.guoxun.airbaba.mvp.model.bean.AdListEntity
+import com.guoxun.airbaba.mvp.model.bean.GoodsListEntity
 import com.guoxun.airbaba.mvp.model.bean.MenuEntity
+import com.guoxun.airbaba.mvp.model.bean.SelectGoodsEntity
 import com.guoxun.airbaba.mvp.presenter.AdListPresenter
-import com.guoxun.airbaba.showToast
+import com.guoxun.airbaba.mvp.presenter.GoodsListPresenter
+import com.guoxun.airbaba.mvp.presenter.SelectGoodsPresenter
 import com.guoxun.airbaba.ui.activity.home.*
 import com.guoxun.airbaba.ui.activity.home.goods.GoodsDetailsActivity
 import com.guoxun.airbaba.ui.activity.home.goods.GoodsTypeActivity
@@ -26,29 +31,34 @@ import java.util.*
 
 
 /**
-  * @des    首页 AdList
+  * @des    首页 AdList  SelectGoods GoodsList
   * @auther JayGengi
   * @data   2019/7/27  14:35
   * @email  jaygengiii@gmail.com
   */
 
-class HomeIndexFragment : BaseFragment() , AdListContract.View{
-
+class HomeIndexFragment : BaseFragment() , AdListContract.View
+                    ,SelectGoodsContract.View
+                    , GoodsListContract.View{
 
     private var menuList = ArrayList<MenuEntity>()
     private var menu = MenuEntity()
     private val mAdapter by lazy { activity?.let { HomeMenuAdapter( menuList) } }
 
-    private var selectList = ArrayList<MenuEntity>()
+    private var selectList = ArrayList<SelectGoodsEntity.ResultsBean>()
     private val selectAdapter by lazy { activity?.let { HomeSelectAdapter( selectList) } }
 
-    private var shopList = ArrayList<String>()
+    private var shopList = ArrayList<GoodsListEntity.ResultsBean>()
     private val shopAdapter by lazy { activity?.let { HomeShopAdapter( shopList) } }
 
 
     private val mPresenter by lazy { AdListPresenter() }
+    private val mSelectGoodsPresenter by lazy { SelectGoodsPresenter() }
+    private val mGoodsListPresenter by lazy { GoodsListPresenter() }
     init {
         mPresenter.attachView(this)
+        mSelectGoodsPresenter.attachView(this)
+        mGoodsListPresenter.attachView(this)
     }
     override fun getLayoutId(): Int = R.layout.fragment_home_index
 
@@ -60,6 +70,9 @@ class HomeIndexFragment : BaseFragment() , AdListContract.View{
         //类型 1根据广告位置 2根据商品分类
         // types ==1时广告位置id，首页轮播，请传入1。types==2时传递商品一级分类
         mPresenter.requestAdListInfo("1","1")
+        //首页商城优选商品（只有四个）
+        mSelectGoodsPresenter.requestSelectGoodsInfo()
+        mGoodsListPresenter.requestGoodsListInfo("","","","",CURRENT_PAGE)
     }
 
     override fun initView() {
@@ -180,26 +193,6 @@ class HomeIndexFragment : BaseFragment() , AdListContract.View{
             addItemDecoration(GridSpacingItemDecoration(5,5,true))
             adapter = selectAdapter
         }
-        selectList.clear()
-        menu = MenuEntity()
-        menu.apply {
-            name = "棒棒糖"
-            icon = R.mipmap.bangbangtang
-        }
-        selectList.add(menu)
-        menu = MenuEntity()
-        menu.apply {
-            name = "棒棒糖"
-            icon = R.mipmap.bangbangtang
-        }
-        selectList.add(menu)
-        menu = MenuEntity()
-        menu.apply {
-            name = "棒棒糖"
-            icon = R.mipmap.bangbangtang
-        }
-        selectList.add(menu)
-        selectAdapter?.setNewData(selectList)
         selectAdapter!!.setOnItemClickListener { adapter, view, position ->
             startActivity(Intent(context, GoodsDetailsActivity::class.java))
         }
@@ -211,12 +204,6 @@ class HomeIndexFragment : BaseFragment() , AdListContract.View{
             addItemDecoration(GridSpacingItemDecoration(5,5,true))
             adapter = shopAdapter
         }
-        shopList.clear()
-        shopList.add("名称")
-        shopList.add("名称")
-        shopList.add("名称")
-        shopList.add("名称")
-        shopAdapter?.setNewData(shopList)
         shopAdapter!!.setOnItemClickListener { adapter, view, position ->
             startActivity(Intent(context, GoodsDetailsActivity::class.java))
         }
@@ -275,9 +262,23 @@ class HomeIndexFragment : BaseFragment() , AdListContract.View{
     override fun showAdListInfo(dataInfo: List<AdListEntity.ResultsBean>) {
         initBanner(dataInfo)
     }
+    override fun showSelectGoodsInfo(dataInfo: List<SelectGoodsEntity.ResultsBean>) {
+        selectAdapter?.setNewData(dataInfo)
+    }
 
+    override fun showGoodsListInfo(dataInfo: List<GoodsListEntity.ResultsBean>) {
+        shopAdapter?.run {
+            if ((dataInfo.isNotEmpty()) || CURRENT_PAGE>1) {
+                if (CURRENT_PAGE == 1) {
+                    shopList.clear()
+                }
+                shopList.addAll(dataInfo)
+                setNewData(shopList)
+            }
+        }
+    }
     override fun showError(msg: String, errorCode: Int) {
-        showToast(msg)
+//        showToast(msg)
     }
     /**
      * 显示 Loading
@@ -295,6 +296,8 @@ class HomeIndexFragment : BaseFragment() , AdListContract.View{
     override fun onDestroy() {
         super.onDestroy()
         mPresenter.detachView()
+        mSelectGoodsPresenter.detachView()
+        mGoodsListPresenter.detachView()
     }
 }
 

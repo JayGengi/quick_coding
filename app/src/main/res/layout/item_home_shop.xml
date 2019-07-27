@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="8dp"
-    android:background="@drawable/common_textview_border_white"
-    >
+    android:background="@drawable/common_textview_border_white">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
     <ImageView
+        android:id="@+id/img"
         android:layout_width="151dp"
+        android:minHeight="120dp"
+        android:maxHeight="150dp"
         android:layout_height="wrap_content"
-        android:src="@mipmap/bangbangtang"
+        android:scaleType="centerCrop"
         />
         <TextView
             android:id="@+id/title"
@@ -23,17 +25,18 @@
             android:padding="6dp"
             android:lines="1"
             android:ellipsize="end"
-            android:text="念食安含特价初榨混..."
+            tools:text="念食安含特价初榨混..."
             android:textColor="@color/color_first_text"
             android:textSize="15sp"
             />
         <TextView
+            android:id="@+id/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="6dp"
             android:lines="1"
             android:ellipsize="end"
-            android:text="西班牙进口原油"
+            tools:text="西班牙进口原油"
             android:textColor="@color/color_second_text"
             android:textSize="12sp"
             />
@@ -44,22 +47,24 @@
         android:padding="6dp"
         android:orientation="horizontal">
         <TextView
+            android:id="@+id/now_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lines="1"
             android:ellipsize="end"
-            android:text="￥48.9"
+            tools:text="￥48.9"
             android:textColor="@color/air_color_red"
             android:textSize="15sp"
             />
 
         <TextView
+            android:id="@+id/old_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lines="1"
             android:ellipsize="end"
             android:layout_marginStart="10dp"
-            android:text="￥48.9"
+            tools:text="￥48.9"
             android:textColor="@color/color_second_text"
             android:textSize="12sp"
             />
@@ -67,12 +72,13 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/per_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingStart="6dp"
         android:lines="1"
         android:ellipsize="end"
-        android:text="6.1万人已买"
+        tools:text="6.1万人已买"
         android:textColor="@color/color_second_text"
         android:textSize="12sp"
         />
