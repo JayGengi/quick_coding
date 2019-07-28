@@ -66,7 +66,14 @@ class HomeTypeFragment : BaseFragment(),CategoryTContract.View , GoodsListContra
         mGoodsListPresenter.requestGoodsListInfo("","",pid.toString(),"",CURRENT_PAGE)
     }
     override fun initView() {
-
+        refreshLayout.setOnRefreshListener {
+            CURRENT_PAGE =1
+            loadData()
+        }
+//        refreshLayout.setOnLoadMoreListener {
+//            CURRENT_PAGE++
+//            loadData()
+//        }
         recycler_menu.apply {
             setHasFixedSize(true)
             isNestedScrollingEnabled = false
@@ -140,6 +147,12 @@ class HomeTypeFragment : BaseFragment(),CategoryTContract.View , GoodsListContra
      * 隐藏 Loading
      */
     override fun dismissLoading() {
+        if(refreshLayout!=null && refreshLayout.isRefreshing){
+            refreshLayout.finishRefresh()
+        }
+        if(refreshLayout!=null && refreshLayout.isLoading){
+            refreshLayout.finishLoadMore()
+        }
         mLayoutStatusView?.dismissLoading()
     }
 

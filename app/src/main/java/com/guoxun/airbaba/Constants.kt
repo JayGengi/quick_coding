@@ -38,5 +38,11 @@ class Constants private constructor() {
          * 文件共享
          */
         const val FILE_PROVIDER = "com.guoxun.airbaba.fileprovider"
+
+
+        // sharedPrefrence
+        const val SP_FILE_NAME = "airbaba.xml"
+        const val SP_KEY_TOKEN = "SP_KEY_TOKEN"
+        const val SP_KEY_IS_LOGIN = "SP_KEY_IS_LOGIN"
     }
 }

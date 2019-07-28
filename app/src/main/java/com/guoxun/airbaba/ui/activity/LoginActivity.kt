@@ -7,6 +7,7 @@ import android.os.CountDownTimer
 import android.view.View
 import com.blankj.utilcode.util.RegexUtils
 import com.blankj.utilcode.util.StringUtils
+import com.guoxun.airbaba.Constants
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.base.BaseActivity
 import com.guoxun.airbaba.db.User
@@ -15,6 +16,7 @@ import com.guoxun.airbaba.mvp.contract.SendLineContract
 import com.guoxun.airbaba.mvp.presenter.LoginPresenter
 import com.guoxun.airbaba.mvp.presenter.SendLinePresenter
 import com.guoxun.airbaba.showToast
+import com.guoxun.airbaba.utils.SharedPreferencesUtils
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog
 import kotlinx.android.synthetic.main.activity_login.*
 import org.litepal.LitePal
@@ -140,8 +142,14 @@ class LoginActivity : BaseActivity(),LoginContract.View, SendLineContract.View,V
 
     override fun showLoginInfo(dataInfo: User) {
         // 清除数据库
-        LitePal.deleteAll(User::class.java)
-        dataInfo.save()
+//        val token = Preference("token","").getValue()
+        SharedPreferencesUtils.remove(this,Constants.SP_KEY_TOKEN)
+        SharedPreferencesUtils.remove(this,Constants.SP_KEY_IS_LOGIN)
+        SharedPreferencesUtils.put(this, Constants.SP_KEY_TOKEN, dataInfo.token)
+        SharedPreferencesUtils.put(this, Constants.SP_KEY_IS_LOGIN, true)
+
+//        LitePal.deleteAll(User::class.java)
+//        dataInfo.save()
         finish()
     }
 

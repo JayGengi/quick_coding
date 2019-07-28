@@ -1,14 +1,14 @@
 package com.guoxun.airbaba.net
 
+import android.util.Log
+import com.guoxun.airbaba.Constants
 import com.guoxun.airbaba.MyApplication
 import com.guoxun.airbaba.api.ApiService
 import com.guoxun.airbaba.api.UrlConstant
-import com.guoxun.airbaba.db.User
 import com.guoxun.airbaba.utils.NetworkUtil
-import com.guoxun.airbaba.utils.Preference
+import com.guoxun.airbaba.utils.SharedPreferencesUtils
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
-import org.litepal.LitePal
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -32,12 +32,12 @@ object RetrofitManager{
 //             .setLenient()
 //             .create()
 
+
+    private var token = SharedPreferencesUtils.get(MyApplication.context,Constants.SP_KEY_TOKEN, "") as String
     val service: ApiService by lazy (LazyThreadSafetyMode.SYNCHRONIZED){
         getRetrofit().create(ApiService::class.java)
     }
 
-    private var token: String? = ""
-            //LitePal.findFirst(User::class.java)!!.token
 
     /**
      * 设置公共参数
@@ -52,11 +52,11 @@ object RetrofitManager{
             chain.proceed(request)
         }
     }
-
     /**
      * 设置头
      */
     private fun addHeaderInterceptor(): Interceptor {
+        Log.d("token", token)
         return Interceptor { chain ->
             val originalRequest = chain.request()
             val requestBuilder = originalRequest.newBuilder()
@@ -123,7 +123,7 @@ object RetrofitManager{
 
         return OkHttpClient.Builder()
                 .addInterceptor(addQueryParameterInterceptor())  //参数添加
-                .addInterceptor(addHeaderInterceptor()) // token过滤
+                .addNetworkInterceptor(addHeaderInterceptor()) // token过滤
 //                .addInterceptor(addCacheInterceptor())
                 .addInterceptor(httpLoggingInterceptor) //日志,所有的请求响应度看到
                 .cache(cache)  //添加缓存

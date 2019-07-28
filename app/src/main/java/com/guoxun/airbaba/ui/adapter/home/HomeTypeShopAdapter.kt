@@ -16,7 +16,7 @@ import com.guoxun.airbaba.utils.glide.GlideUtils
  */
 class HomeTypeShopAdapter(data: List<GoodsListEntity.ResultsBean>?)
     : BaseQuickAdapter<GoodsListEntity.ResultsBean, BaseViewHolder>
-(R.layout.item_home_type_shop, data) {
+(R.layout.item_home_type_goods, data) {
 
     override fun convert(helper: BaseViewHolder, item: GoodsListEntity.ResultsBean?) {
 

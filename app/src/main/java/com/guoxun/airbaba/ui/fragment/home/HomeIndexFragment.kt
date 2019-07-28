@@ -3,7 +3,10 @@ package com.guoxun.airbaba.ui.fragment.home
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import com.guoxun.airbaba.Constants
+import com.guoxun.airbaba.MyApplication
 import com.guoxun.airbaba.R
+import com.guoxun.airbaba.aspectj.AopUtil
 import com.guoxun.airbaba.base.BaseFragment
 import com.guoxun.airbaba.mvp.contract.AdListContract
 import com.guoxun.airbaba.mvp.contract.GoodsListContract
@@ -22,6 +25,7 @@ import com.guoxun.airbaba.ui.adapter.home.HomeMenuAdapter
 import com.guoxun.airbaba.ui.adapter.home.HomeSelectAdapter
 import com.guoxun.airbaba.ui.adapter.home.HomeShopAdapter
 import com.guoxun.airbaba.utils.BannerImageLoader
+import com.guoxun.airbaba.utils.SharedPreferencesUtils
 import com.guoxun.airbaba.utils.picture.ImagePreviewUtils
 import com.guoxun.airbaba.widget.GridSpacingItemDecoration
 import com.youth.banner.BannerConfig
@@ -51,7 +55,6 @@ class HomeIndexFragment : BaseFragment() , AdListContract.View
     private var shopList = ArrayList<GoodsListEntity.ResultsBean>()
     private val shopAdapter by lazy { activity?.let { HomeShopAdapter( shopList) } }
 
-
     private val mPresenter by lazy { AdListPresenter() }
     private val mSelectGoodsPresenter by lazy { SelectGoodsPresenter() }
     private val mGoodsListPresenter by lazy { GoodsListPresenter() }
@@ -76,6 +79,15 @@ class HomeIndexFragment : BaseFragment() , AdListContract.View
     }
 
     override fun initView() {
+
+        refreshLayout.setOnRefreshListener {
+            CURRENT_PAGE =1
+            loadData()
+        }
+//        refreshLayout.setOnLoadMoreListener {
+//            CURRENT_PAGE++
+//            loadData()
+//        }
 
         recycler.apply {
             setHasFixedSize(true)
@@ -157,7 +169,9 @@ class HomeIndexFragment : BaseFragment() , AdListContract.View
                 }
                 //免费设计
                 2 ->{
-                    startActivity(Intent(context, HomeFreeDesignActivity::class.java))
+//                    startActivity(Intent(context, HomeFreeDesignActivity::class.java))
+                    AopUtil.getInstance().isLogin = SharedPreferencesUtils.get(context,Constants.SP_KEY_IS_LOGIN, false) as Boolean
+                    context?.let { HomeFreeDesignActivity.startNoDialog(it) }
                 }
                 //签到
                 3 ->{
@@ -290,6 +304,12 @@ class HomeIndexFragment : BaseFragment() , AdListContract.View
      * 隐藏 Loading
      */
     override fun dismissLoading() {
+        if(refreshLayout!=null && refreshLayout.isRefreshing){
+            refreshLayout.finishRefresh()
+        }
+        if(refreshLayout!=null && refreshLayout.isLoading){
+            refreshLayout.finishLoadMore()
+        }
         mLayoutStatusView?.dismissLoading()
     }
 
