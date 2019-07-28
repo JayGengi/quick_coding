@@ -70,10 +70,10 @@ class HomeTypeFragment : BaseFragment(),CategoryTContract.View , GoodsListContra
             CURRENT_PAGE =1
             loadData()
         }
-//        refreshLayout.setOnLoadMoreListener {
-//            CURRENT_PAGE++
-//            loadData()
-//        }
+        refreshLayout.setOnLoadMoreListener {
+            CURRENT_PAGE++
+            mGoodsListPresenter.requestGoodsListInfo("","",pid.toString(),"",CURRENT_PAGE)
+        }
         recycler_menu.apply {
             setHasFixedSize(true)
             isNestedScrollingEnabled = false

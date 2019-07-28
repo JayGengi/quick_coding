@@ -14,11 +14,11 @@ class AdListPresenter : BasePresenter<AdListContract.View>(), AdListContract.Pre
 
     override fun requestAdListInfo(types: String , pid : String) {
         checkViewAttached()
-//        mRootView?.showLoading()
+        mRootView?.showLoading()
         val disposable = mAdListModel.getAdListInfo(types, pid)
                 .subscribe({ responseInfo ->
                     mRootView?.apply {
-//                        dismissLoading()
+                        dismissLoading()
                         if (responseInfo.flag == ErrorStatus.SUCCESS) {
                             responseInfo.response?.let { showAdListInfo(it) }
                         } else {
@@ -28,7 +28,7 @@ class AdListPresenter : BasePresenter<AdListContract.View>(), AdListContract.Pre
                 }, { t ->
                     mRootView?.apply {
                         //处理异常
-//                        dismissLoading()
+                        dismissLoading()
                         showError(ExceptionHandle.handleException(t), ExceptionHandle.errorCode)
                     }
 

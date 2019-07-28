@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import com.guoxun.airbaba.Constants
-import com.guoxun.airbaba.MyApplication
 import com.guoxun.airbaba.R
 import com.guoxun.airbaba.aspectj.AopUtil
 import com.guoxun.airbaba.base.BaseFragment
@@ -84,10 +83,10 @@ class HomeIndexFragment : BaseFragment() , AdListContract.View
             CURRENT_PAGE =1
             loadData()
         }
-//        refreshLayout.setOnLoadMoreListener {
-//            CURRENT_PAGE++
-//            loadData()
-//        }
+        refreshLayout.setOnLoadMoreListener {
+            CURRENT_PAGE++
+            mGoodsListPresenter.requestGoodsListInfo("","","","",CURRENT_PAGE)
+        }
 
         recycler.apply {
             setHasFixedSize(true)
@@ -170,7 +169,8 @@ class HomeIndexFragment : BaseFragment() , AdListContract.View
                 //免费设计
                 2 ->{
 //                    startActivity(Intent(context, HomeFreeDesignActivity::class.java))
-                    AopUtil.getInstance().isLogin = SharedPreferencesUtils.get(context,Constants.SP_KEY_IS_LOGIN, false) as Boolean
+                    AopUtil.getInstance().isLogin = false
+                    //SharedPreferencesUtils.get(context,Constants.SP_KEY_IS_LOGIN, false) as Boolean
                     context?.let { HomeFreeDesignActivity.startNoDialog(it) }
                 }
                 //签到

@@ -20,6 +20,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="2dp"
+        android:lines="1"
+        android:ellipsize="end"
         android:textColor="@color/color_second_text"
         android:textSize="12sp"
         tools:text="名称"
