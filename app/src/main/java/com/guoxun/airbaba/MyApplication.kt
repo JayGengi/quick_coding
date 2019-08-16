@@ -6,7 +6,6 @@ import android.content.Context
 import android.os.Bundle
 import android.support.multidex.MultiDexApplication
 import android.util.Log
-import com.guoxun.airbaba.aspectj.AopUtil
 import com.guoxun.airbaba.utils.DisplayManager
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
@@ -17,11 +16,12 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
-import org.litepal.LitePal
 import kotlin.properties.Delegates
 
 
-class MyApplication : MultiDexApplication(){
+
+
+class MyApplication : MultiDexApplication() {
     private var refWatcher: RefWatcher? = null
 
     companion object {
@@ -42,15 +42,11 @@ class MyApplication : MultiDexApplication(){
         super.onCreate()
         context = applicationContext
 //        refWatcher = setupLeakCanary()
-        // 初始化LitePal数据库
-        LitePal.initialize(this)
         initConfig()
-        AopUtil.init(this)
-        DisplayManager.init(this)
+        DisplayManager.init(context)
         registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks)
-
-
     }
+
 
     private fun setupLeakCanary(): RefWatcher {
         return if (LeakCanary.isInAnalyzerProcess(this)) {
@@ -106,6 +102,7 @@ class MyApplication : MultiDexApplication(){
             Log.d(TAG, "onDestroy: " + activity.componentName.className)
         }
     }
+
     /**
      * 上拉加载，下拉刷新
      * static 代码段可以防止内存泄露
@@ -120,7 +117,7 @@ class MyApplication : MultiDexApplication(){
         }
         //设置全局的Footer构建器
         SmartRefreshLayout.setDefaultRefreshFooterCreator { context, layout ->
-//            layout.setPrimaryColorsId(R.color.common_color_line, R.color.qmui_config_color_black)
+            //            layout.setPrimaryColorsId(R.color.common_color_line, R.color.qmui_config_color_black)
             //指定为经典Footer，默认是 BallPulseFooter
             ClassicsFooter(context).setSpinnerStyle(SpinnerStyle.Translate)
         }

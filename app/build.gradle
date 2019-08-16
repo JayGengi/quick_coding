@@ -33,7 +33,7 @@ android {
 
         ndk {
             //APP的build.gradle设置支持的SO库架构
-            abiFilters 'armeabi', 'armeabi-v7a', 'x86'
+            abiFilters 'armeabi',"armeabi-v7a", "arm64-v8a", 'x86'
         }
         multiDexEnabled true
     }
@@ -181,13 +181,4 @@ dependencies {
 
     //张鸿洋老哥的流式布局，支持单选、多选
     implementation 'com.hyman:flowlayout-lib:1.1.2'
-
-    //商品、详情、评价切换的控件
-    implementation 'com.gxz.pagerslidingtabstrip:library:1.3'
-
-    //aop
-    implementation 'org.aspectj:aspectjrt:1.8.13'
-
-    //litepal
-    implementation 'org.litepal.android:core:2.0.0'
 }

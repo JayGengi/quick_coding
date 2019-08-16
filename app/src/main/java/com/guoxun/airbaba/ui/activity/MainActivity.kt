@@ -25,20 +25,16 @@ import java.util.*
 
 class MainActivity : BaseActivity() {
 
-    private val mTitles = arrayOf("首页", "报修管理", "免费设计", "购物车", "个人中心")
+    private val mTitles = arrayOf("首页",  "个人中心")
 
     // 未被选中的图标
-    private val mIconUnSelectIds = intArrayOf(R.mipmap.ic_home_normal, R.mipmap.ic_repair_normal, R.mipmap.ic_freedesign_normal, R.mipmap.ic_shoppingcart_normal, R.mipmap.ic_my_normal)
+    private val mIconUnSelectIds = intArrayOf(R.mipmap.ic_home_normal, R.mipmap.ic_my_normal)
     // 被选中的图标
-    private val mIconSelectIds = intArrayOf(R.mipmap.ic_home_selected, R.mipmap.ic_repair_selected, R.mipmap.ic_freedesign_selected, R.mipmap.ic_shoppingcart_selected, R.mipmap.ic_my_selected)
+    private val mIconSelectIds = intArrayOf(R.mipmap.ic_home_selected, R.mipmap.ic_my_selected)
 
     private val mTabEntities = ArrayList<CustomTabEntity>()
     private var isUser: Boolean = false
     private var mHomeFragment: HomeFragment? = null
-    private var mRepairFragment: RepairFragment? = null
-    private var mRepairGuyFragment: RepairGuyFragment? = null
-    private var mFreeDesignFragment: FreeDesignFragment? = null
-    private var mShopCartFragment: ShopCartFragment? = null
     //    private var mHotFragment: GankTypeFragment? = null
     private var mMineFragment: MineFragment? = null
 
@@ -98,39 +94,7 @@ class MainActivity : BaseActivity() {
                 mHomeFragment = it
                 transaction.add(R.id.fl_container, it, "home")
             }
-            1  //报修管理
-            ->
-                if (isUser) {
-                    mRepairFragment?.let {
-                        transaction.show(it)
-                    } ?: RepairFragment.getInstance(mTitles[position]).let {
-                        mRepairFragment = it
-                        transaction.add(R.id.fl_container, it, "repair")
-                    }
-                } else {
-                    mRepairGuyFragment?.let {
-                        transaction.show(it)
-                    } ?: RepairGuyFragment.getInstance(mTitles[position]).let {
-                        mRepairGuyFragment = it
-                        transaction.add(R.id.fl_container, it, "repair")
-                    }
-                }
-
-            2  //免费设计
-            -> mFreeDesignFragment?.let {
-                transaction.show(it)
-            } ?: FreeDesignFragment.getInstance(mTitles[position]).let {
-                mFreeDesignFragment = it
-                transaction.add(R.id.fl_container, it, "freeDesign")
-            }
-            3  //购物车
-            -> mShopCartFragment?.let {
-                transaction.show(it)
-            } ?: ShopCartFragment.getInstance(mTitles[position]).let {
-                mShopCartFragment = it
-                transaction.add(R.id.fl_container, it, "shopCart")
-            }
-            4 //我的
+            1 //我的
             -> mMineFragment?.let {
 
                 transaction.show(it)
@@ -156,13 +120,6 @@ class MainActivity : BaseActivity() {
      */
     private fun hideFragments(transaction: FragmentTransaction) {
         mHomeFragment?.let { transaction.hide(it) }
-        if (isUser) {
-            mRepairFragment?.let { transaction.hide(it) }
-        } else {
-            mRepairGuyFragment?.let { transaction.hide(it) }
-        }
-        mFreeDesignFragment?.let { transaction.hide(it) }
-        mShopCartFragment?.let { transaction.hide(it) }
         mMineFragment?.let { transaction.hide(it) }
     }
 

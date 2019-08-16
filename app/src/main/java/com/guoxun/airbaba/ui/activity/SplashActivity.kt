@@ -47,7 +47,7 @@ class SplashActivity : BaseActivity() {
         })
 //        tv_version_name.text = "v${AppUtils.getVerName(MyApplication.context)}"
         if (alphaAnimation != null) {
-            iv_web_icon.startAnimation(alphaAnimation)
+            welcome.startAnimation(alphaAnimation)
         }
     }
     override fun start() {
