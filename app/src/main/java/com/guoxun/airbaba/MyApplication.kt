@@ -41,7 +41,7 @@ class MyApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         context = applicationContext
-//        refWatcher = setupLeakCanary()
+        refWatcher = setupLeakCanary()
         initConfig()
         DisplayManager.init(context)
         registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks)
