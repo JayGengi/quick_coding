@@ -15,7 +15,7 @@ android {
     compileSdkVersion 27
     buildToolsVersion "28.0.3"
     defaultConfig {
-        applicationId "com.guoxun.airbaba"
+        applicationId "com.guoxun.demo"
         minSdkVersion 18
         targetSdkVersion 27
         versionCode 1
@@ -34,6 +34,7 @@ android {
             //APP的build.gradle设置支持的SO库架构
             abiFilters 'armeabi',"armeabi-v7a", "arm64-v8a", 'x86'
         }
+
         multiDexEnabled true
     }
     buildTypes {
@@ -59,7 +60,7 @@ android {
     // 自定义输出配置
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "airbaba_v${variant.versionName}_${variant.name}.apk"
+            outputFileName = "demo_v${variant.versionName}_${variant.name}.apk"
         }
     }
     compileOptions {

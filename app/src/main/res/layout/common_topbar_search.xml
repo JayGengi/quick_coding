@@ -10,14 +10,8 @@
         android:focusableInTouchMode="true"
         android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="10dp"
-            android:src="@mipmap/ic_search_nor" />
 
-        <com.guoxun.airbaba.widget.BaseEditText
+        <com.guoxun.demo.widget.BaseEditText
             android:id="@+id/srarch_title"
             android:layout_width="200dp"
             android:layout_height="30dp"

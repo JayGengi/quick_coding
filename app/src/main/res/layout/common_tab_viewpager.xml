@@ -12,7 +12,7 @@
             android:background="@color/colorPrimary"
             android:orientation="vertical">
 
-            <com.guoxun.airbaba.widget.SlidingTabLayout
+            <com.guoxun.demo.widget.SlidingTabLayout
                 android:id="@+id/sliding_tabs"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
