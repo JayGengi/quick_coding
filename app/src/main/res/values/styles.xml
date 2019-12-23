@@ -16,11 +16,11 @@
             ***********************************************-->
     <style name="QDTopBar" parent="QMUI.TopBar">
         <item name="qmui_topbar_separator_height">0px</item>
-        <item name="qmui_topbar_title_color">@color/color_black</item>
+        <item name="qmui_topbar_title_color">@color/color_white</item>
         <item name="qmui_topbar_bg_color">@color/colorPrimary</item>
-        <item name="qmui_topbar_left_back_drawable_id">@drawable/ic_left</item>
+        <item name="qmui_topbar_left_back_drawable_id">@mipmap/ic_back_white</item>
         <item name="android:paddingLeft">0dp</item>
-        <item name="qmui_topbar_text_btn_color_state_list">@color/color_black</item>
+        <item name="qmui_topbar_text_btn_color_state_list">@color/color_white</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -32,40 +32,6 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
-
-    <style name="repair_layout">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@color/colorPrimary</item>
-        <item name="android:paddingLeft">10dp</item>
-        <item name="android:paddingRight">10dp</item>
-        <item name="android:paddingTop">15dp</item>
-        <item name="android:paddingBottom">15dp</item>
-    </style>
-    <style name="repair_title">
-        <item name="android:layout_width">100dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@color/color_black</item>
-    </style>
-
-    <style name="repair_value">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingLeft">20dp</item>
-        <item name="android:background">@null</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/color_black</item>
-    </style>
-
-    <style name="repair_value_tv">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingLeft">20dp</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/color_black</item>
-    </style>
-
     <!-- 自动换行的linerLayout -->
     <style name="WarpLinearLayoutDefault">
         <item name="grivate">left</item>
@@ -74,13 +40,6 @@
         <item name="isFull">false</item>
     </style>
 
-    <!--自定义ratingBar-->
-    <style name="roomRatingBar" parent="@android:style/Widget.RatingBar">
-        <item name="android:progressDrawable">@drawable/ratingbar_drawable</item>
-        <item name="android:minHeight">18dip</item>
-        <item name="android:maxHeight">18dip</item>
-        <item name="android:isIndicator">true</item>
-    </style>
 
     <!-- 自定义dialog背景全透明无边框 -->
     <style name="MyDialog" parent="android:style/Theme.Dialog">
@@ -96,6 +55,18 @@
         <!-- 是否模糊 -->
         <item name="android:backgroundDimEnabled">false</item>
     </style>
+    <style name="dialog_d" parent="@android:style/Theme.Dialog">
+        <item name="android:backgroundDimEnabled">true</item><!--activity不变暗-->
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+    <style name="animate_dialog">
+        <item name="android:backgroundDimEnabled">true</item><!--activity不变暗-->
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowEnterAnimation">@anim/anim_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_out</item>
+    </style>
+    <style name="custom_checkbox" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_style</item>
 
-
+    </style>
 </resources>

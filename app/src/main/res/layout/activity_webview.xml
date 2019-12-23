@@ -5,10 +5,6 @@
     android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.qmuiteam.qmui.widget.QMUITopBar
-        android:id="@+id/topbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
     <im.delight.android.webview.AdvancedWebView
         android:id="@+id/webview"
         android:layout_width="match_parent"

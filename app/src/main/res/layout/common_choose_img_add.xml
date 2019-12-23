@@ -16,10 +16,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center_vertical"
+            android:background="#F2F2F2"
             >
             <ImageView
                 android:layout_width="28dp"
                 android:layout_height="28dp"
+                android:src="@mipmap/ic_img_add"
                 android:layout_gravity="center"
                 />
             <TextView
@@ -28,7 +30,7 @@
                 android:textSize="@dimen/dp_10"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:text="最多上传6张"
+                android:text="添加图片"
                 android:textColor="@color/color_assist_text"
                 />
 

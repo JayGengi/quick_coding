@@ -6,20 +6,20 @@ apply plugin: 'kotlin-kapt'  //kapt3插件
 android {
 //    signingConfigs {
 //        config {
-//            keyAlias 'kotlingank'
+//            keyAlias 'shanzuo'
 //            keyPassword '123456'
-//            storeFile file('../kotlingank.jks')
+//            storeFile file('../app/shanzuo.jks')
 //            storePassword '123456'
 //        }
 //    }
-    compileSdkVersion 27
+    compileSdkVersion 28
     buildToolsVersion "28.0.3"
     defaultConfig {
-        applicationId "com.guoxun.demo"
+        applicationId "com.guoxun.shanzuo"
         minSdkVersion 18
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.1.0"
+        targetSdkVersion 28
+        versionCode 1000
+        versionName "1.0.1"
         javaCompileOptions {
             annotationProcessorOptions {
                 includeCompileClasspath true
@@ -34,7 +34,6 @@ android {
             //APP的build.gradle设置支持的SO库架构
             abiFilters 'armeabi',"armeabi-v7a", "arm64-v8a", 'x86'
         }
-
         multiDexEnabled true
     }
     buildTypes {
@@ -45,7 +44,7 @@ android {
         }
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             debuggable false
 //            signingConfig signingConfigs.config
             zipAlignEnabled true
@@ -60,7 +59,7 @@ android {
     // 自定义输出配置
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "demo_v${variant.versionName}_${variant.name}.apk"
+            outputFileName = "shanzuo_v${variant.versionName}_${variant.name}.apk"
         }
     }
     compileOptions {
@@ -82,11 +81,12 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // Support库
-    implementation 'com.android.support:support-v4:27.1.1'
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:cardview-v7:27.1.1'
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
-    implementation 'com.android.support:design:27.1.1'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
 
     implementation 'com.android.support.constraint:constraint-layout:2.0.0-alpha2'
 
@@ -168,4 +168,5 @@ dependencies {
 
     //张鸿洋老哥的流式布局，支持单选、多选
     implementation 'com.hyman:flowlayout-lib:1.1.2'
+
 }
