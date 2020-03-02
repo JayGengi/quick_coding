@@ -12,9 +12,7 @@ import com.guoxun.shanzuo.base.BaseActivity
 import com.guoxun.shanzuo.bean.TabEntity
 import com.guoxun.shanzuo.showToast
 import com.guoxun.shanzuo.ui.fragment.home.HomeFragment
-import com.guoxun.shanzuo.ui.fragment.information.InfoFragment
 import com.guoxun.shanzuo.ui.fragment.mine.MineFragment
-import com.guoxun.shanzuo.ui.fragment.order.OrderFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -28,18 +26,16 @@ import java.util.*
 
 class MainActivity : BaseActivity() {
 
-    private val mTitles = arrayOf("首页",  "信息",  "订单",  "我的")
+    private val mTitles = arrayOf("首页", "我的")
 
     // 未被选中的图标
-    private val mIconUnSelectIds = intArrayOf(R.mipmap.ic_home_normal, R.mipmap.ic_information_normal,R.mipmap.ic_order_normal, R.mipmap.ic_my_normal)
+    private val mIconUnSelectIds = intArrayOf(R.mipmap.ic_home_normal,R.mipmap.ic_my_normal)
     // 被选中的图标
-    private val mIconSelectIds = intArrayOf(R.mipmap.ic_home_selected, R.mipmap.ic_information_selected,R.mipmap.ic_order_selected, R.mipmap.ic_my_selected)
+    private val mIconSelectIds = intArrayOf(R.mipmap.ic_home_selected, R.mipmap.ic_my_selected)
 
     private val mTabEntities = ArrayList<CustomTabEntity>()
     private var isUser: Boolean = false
     private var mHomeFragment: HomeFragment? = null
-    private var mInformationFragment: InfoFragment? = null
-    private var mOrderFragment: OrderFragment? = null
     private var mMineFragment: MineFragment? = null
 
     //默认为0
@@ -98,24 +94,7 @@ class MainActivity : BaseActivity() {
                 mHomeFragment = it
                 transaction.add(R.id.fl_container, it, "home")
             }
-            //
-            1 //信息
-            -> mInformationFragment?.let {
-
-                transaction.show(it)
-            } ?: InfoFragment.getInstance(mTitles[position]).let {
-                mInformationFragment = it
-                transaction.add(R.id.fl_container, it, "information")
-            }
-            2 //订单
-            -> mOrderFragment?.let {
-
-                transaction.show(it)
-            } ?: OrderFragment.getInstance(mTitles[position]).let {
-                mOrderFragment = it
-                transaction.add(R.id.fl_container, it, "order")
-            }
-            3 //我的
+            1 //我的
             -> mMineFragment?.let {
 
                 transaction.show(it)
@@ -141,8 +120,6 @@ class MainActivity : BaseActivity() {
      */
     private fun hideFragments(transaction: FragmentTransaction) {
         mHomeFragment?.let { transaction.hide(it) }
-        mInformationFragment?.let { transaction.hide(it) }
-        mOrderFragment?.let { transaction.hide(it) }
         mMineFragment?.let { transaction.hide(it) }
     }
 
