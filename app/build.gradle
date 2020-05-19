@@ -15,7 +15,7 @@ android {
     compileSdkVersion 28
     buildToolsVersion "28.0.3"
     defaultConfig {
-        applicationId "com.guoxun.shanzuo"
+        applicationId "com.guoxun.coding"
         minSdkVersion 18
         targetSdkVersion 28
         versionCode 1000
@@ -59,7 +59,7 @@ android {
     // 自定义输出配置
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "shanzuo_v${variant.versionName}_${variant.name}.apk"
+            outputFileName = "coding_v${variant.versionName}_${variant.name}.apk"
         }
     }
     compileOptions {
