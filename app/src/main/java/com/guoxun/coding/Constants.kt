@@ -48,7 +48,7 @@ class Constants private constructor() {
          * 判断目录是否存在，不存在则判断是否创建成功
          * FileUtils.createOrExistsDir(Constants.SAVE_REAL_PATH);
          */
-        val SAVE_REAL_PATH = SDCardUtils.getSDCardPaths()[0] + "/coding"
+        val SAVE_REAL_PATH = SDCardUtils.getSDCardPathByEnvironment() + "/coding"
         // sharedPrefrence
         const val SP_FILE_NAME = "coding.xml"
         const val SP_KEY_ID = "SP_KEY_ID"

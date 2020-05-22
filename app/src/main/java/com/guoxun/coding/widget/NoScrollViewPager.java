@@ -1,9 +1,10 @@
 package com.guoxun.coding.widget;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+
+import androidx.viewpager.widget.ViewPager;
 
 /**
   *   提供禁止滑动功能的自定义ViewPager

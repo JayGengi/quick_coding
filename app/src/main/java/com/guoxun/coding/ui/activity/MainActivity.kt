@@ -2,9 +2,9 @@ package com.guoxun.coding.ui.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.support.v4.app.FragmentTransaction
 import android.view.KeyEvent
 import android.view.View
+import androidx.fragment.app.FragmentTransaction
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
 import com.guoxun.coding.R

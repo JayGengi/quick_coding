@@ -1,10 +1,11 @@
 package com.guoxun.coding.ui.adapter
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 
- /**  
+
+/**
    * @description: PageAdapter
    * @author JayGengi
    * @date  2018/11/15 0015 下午 4:48

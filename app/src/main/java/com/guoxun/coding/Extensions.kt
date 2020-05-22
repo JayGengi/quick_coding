@@ -2,12 +2,12 @@ package com.guoxun.coding
 
 import android.app.Activity
 import android.content.Context
-import android.support.v4.app.Fragment
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.guoxun.coding.utils.UserSession
 import java.util.HashMap
 import java.util.regex.Pattern

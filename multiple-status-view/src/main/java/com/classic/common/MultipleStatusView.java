@@ -49,7 +49,6 @@ public class MultipleStatusView extends RelativeLayout {
     private int             mViewStatus;
     private LayoutInflater  mInflater;
     private OnClickListener mOnRetryClickListener;
-    private ProgressDialogUtils progressDialogUtils;
     private final ArrayList<Integer> mOtherIds = new ArrayList<>();
 
     public MultipleStatusView(Context context) {
@@ -181,19 +180,19 @@ public class MultipleStatusView extends RelativeLayout {
      * 显示加载中视图
      */
     public final void showLoading() {
-        progressDialogUtils = ProgressDialogUtils.createDialog(getContext());
-        progressDialogUtils.show();
-//        showLoading(mLoadingViewResId, DEFAULT_LAYOUT_WRAP);
+//        progressDialogUtils = ProgressDialogUtils.createDialog(getContext());
+//        progressDialogUtils.show();
+        showLoading(mLoadingViewResId, DEFAULT_LAYOUT_WRAP);
     }
 
     /**
      * 显示加载中视图
      */
     public final void dismissLoading() {
-        progressDialogUtils.dismiss();
-//        if (null != mLoadingView) {
-//            mLoadingView.setVisibility(GONE);
-//        }
+//        progressDialogUtils.dismiss();
+        if (null != mLoadingView) {
+            mLoadingView.setVisibility(GONE);
+        }
     }
 
     /**

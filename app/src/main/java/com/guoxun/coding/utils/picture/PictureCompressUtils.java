@@ -77,7 +77,7 @@ public class PictureCompressUtils {
                     }
                     @Override
                     public void onSuccess(File file) {
-                        Log.d("onSuccess", FileUtils.getFileSize(file));
+                        Log.d("onSuccess", FileUtils.getLength(file)+"-----");
                         pathResult.add(file);
                     }
 

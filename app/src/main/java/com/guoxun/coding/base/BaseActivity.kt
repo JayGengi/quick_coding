@@ -1,10 +1,10 @@
 package com.guoxun.coding.base
 
 import android.os.Bundle
-import android.support.annotation.LayoutRes
-import android.support.v7.app.AppCompatActivity
 import android.view.*
 import android.widget.LinearLayout
+import androidx.annotation.LayoutRes
+import androidx.appcompat.app.AppCompatActivity
 import com.classic.common.MultipleStatusView
 import com.hwangjr.rxbus.RxBus
 import com.guoxun.coding.MyApplication

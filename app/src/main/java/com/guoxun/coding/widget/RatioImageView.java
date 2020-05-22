@@ -3,10 +3,11 @@ package com.guoxun.coding.widget;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
+
+import androidx.annotation.Nullable;
 
 import com.guoxun.coding.R;
 
