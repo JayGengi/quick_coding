@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter
    * @date  2018/11/15 0015 下午 4:48
    * @email jaygengiii@gmail.com
    */
-class HomePageAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
+class HomePageAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm!!) {
 
     private val fragments = ArrayList<Fragment>()
     private val titles = ArrayList<String>()

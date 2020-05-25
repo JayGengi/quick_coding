@@ -8,7 +8,6 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.guoxun.coding.utils.UserSession
 import java.util.HashMap
 import java.util.regex.Pattern
 
@@ -97,7 +96,7 @@ fun checkPassword(password: String): Boolean {
 }
 fun getCommonMap(baseContext : Context): HashMap<String, Any> {
     val map = HashMap<String, Any>()
-    map["id"] = UserSession.instance.getUId(baseContext)
+//    map["id"] = UserSession.instance.getUId(baseContext)
     return map
 }
 fun EditText.setTextChangeListener(body: (key: String) -> Unit) {

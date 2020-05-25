@@ -16,6 +16,7 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
+import com.tencent.mmkv.MMKV
 import kotlin.properties.Delegates
 
 
@@ -45,6 +46,7 @@ class MyApplication : MultiDexApplication() {
         initConfig()
         DisplayManager.init(context)
         registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks)
+        MMKV.initialize(this)
     }
 
 

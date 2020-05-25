@@ -16,7 +16,7 @@ android {
     buildToolsVersion "28.0.3"
     defaultConfig {
         applicationId "com.guoxun.coding"
-        minSdkVersion 18
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1000
         versionName "1.0.1"
@@ -83,14 +83,14 @@ dependencies {
     // Support库
     //noinspection GradleCompatible
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.google.android.material:material:1.0.0+'
 
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
-    implementation 'androidx.multidex:multidex:2.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
 
     //qmui
     implementation 'com.qmuiteam:qmui:1.1.6'
@@ -112,7 +112,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
 
     ////BaseQuickAdapter[很赞的适配器封装]
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.2'
     //smartRefreshLayout 下拉刷新
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
@@ -130,13 +130,11 @@ dependencies {
     implementation 'com.github.SherlockGougou:BigImageViewPager:v4_2.1.4'
 
     //glide
-    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     implementation 'com.github.bumptech.glide:okhttp3-integration:4.8.0'
-    //WebView
-    implementation 'com.github.delight-im:Android-AdvancedWebView:v3.0.0'
     //今日头条屏幕适配
-    implementation 'me.jessyan:autosize:1.1.2'
+    implementation 'me.jessyan:autosize:1.2.0'
 
     //阿里巴巴多布局
     implementation('com.alibaba.android:vlayout:1.2.6@aar') {
@@ -166,5 +164,14 @@ dependencies {
 
     //张鸿洋老哥的流式布局，支持单选、多选
     implementation 'com.hyman:flowlayout-lib:1.1.2'
+
+    //微信开源项目，替代SP
+    implementation 'com.tencent:mmkv:1.0.22'
+
+    //加载webview
+    implementation 'com.just.agentweb:agentweb:4.1.2'
+
+    ////处理按钮重复点击（AOP）
+    implementation 'com.github.zhujiang521:AndroidAOP:1.0.1'
 
 }
