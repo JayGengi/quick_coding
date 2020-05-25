@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="pajs/app" />
+      <module fileurl="file://$PROJECT_DIR$/multiple-status-view/multiple-status-view.iml" filepath="$PROJECT_DIR$/multiple-status-view/multiple-status-view.iml" group="pajs/multiple-status-view" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/pajs.iml" filepath="$PROJECT_DIR$/.idea/pajs.iml" group="pajs" />
+    </modules>
+  </component>
+</project>

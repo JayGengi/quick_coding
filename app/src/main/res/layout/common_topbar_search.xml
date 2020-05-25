@@ -11,7 +11,7 @@
         android:orientation="horizontal">
 
 
-        <com.guoxun.coding.widget.BaseEditText
+        <com.guoxun.pajs.widget.BaseEditText
             android:id="@+id/srarch_title"
             android:layout_width="200dp"
             android:layout_height="30dp"
